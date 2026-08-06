@@ -1,4 +1,4 @@
-# OrangePi NAS OS
+# JH NAS OS
 
 基于 JH7110 RISC-V 架构、从零构建的轻量级嵌入式 NAS 系统镜像。
 
