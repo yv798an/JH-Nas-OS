@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAS 文件浏览器 - {{.RootName}}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🗄️</span>
+      <div>
+        <h1>NAS 文件浏览器</h1>
+        <p class="subtitle">存储: {{.RootsLabel}} · {{.Sys.Hostname}} · {{.Sys.OS}}/{{.Sys.Arch}}</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 系统信息卡片 -->
+  <section class="sys-cards">
+    <div class="card">
+      <div class="card-head">
+        <span class="card-icon">💾</span>
+        <span class="card-label">内存</span>
+      </div>
+      <div class="card-main">{{printf "%.1f" .Sys.MemPercent}}<small>%</small></div>
+      <div class="card-sub">{{humanSize .Sys.MemUsed}} / {{humanSize .Sys.MemTotal}}</div>
+      <div class="bar"><div class="bar-fill mem" style="width:{{printf "%.1f" .Sys.MemPercent}}%"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="card-icon">📀</span>
+        <span class="card-label">磁盘 ({{.RootName}})</span>
+      </div>
+      <div class="card-main">{{printf "%.1f" .Sys.DiskPercent}}<small>%</small></div>
+      <div class="card-sub">{{humanSize .Sys.DiskUsed}} / {{humanSize .Sys.DiskTotal}}</div>
+      <div class="bar"><div class="bar-fill disk" style="width:{{printf "%.1f" .Sys.DiskPercent}}%"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="card-icon">⚙️</span>
+        <span class="card-label">CPU</span>
+      </div>
+      <div class="card-main">{{.Sys.CPUCores}}<small> 核</small></div>
+      <div class="card-sub" title="{{.Sys.CPUModel}}">{{.Sys.CPUModel}}</div>
+      <div class="card-tag">负载 {{.Sys.LoadAvg}}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="card-icon">⏱️</span>
+        <span class="card-label">运行时间</span>
+      </div>
+      <div class="card-main">{{.Sys.Uptime}}</div>
+      <div class="card-sub">内核 {{.Sys.Kernel}}</div>
+      <div class="card-tag">主机名 {{.Sys.Hostname}}</div>
+    </div>
+  </section>
+
+  <!-- 面包屑导航 -->
+  <nav class="breadcrumb">
+    <a href="/">🏠 NAS 根目录</a>
+    {{range .Breadcrumb}}
+      {{if .Path}}
+      <span class="sep">/</span>
+      <a href="/?dir={{.Path}}">{{.Name}}</a>
+      {{end}}
+    {{end}}
+  </nav>
+
+  <!-- 文件列表 -->
+  <div class="file-box">
+    {{if .Error}}<div class="error">{{.Error}}</div>{{end}}
+
+    {{if .ParentRel}}
+    <div class="up-row"><a href="/?dir={{.ParentRel}}">⬆️ 返回上级目录</a></div>
+    {{end}}
+
+    {{if .Empty}}
+      <div class="empty">📭 此目录为空</div>
+    {{else}}
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>类型</th>
+          <th>大小</th>
+          <th>修改时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{range .Entries}}
+        <tr>
+          <td class="col-name">
+            {{if .IsDir}}
+              <a class="link-dir" href="/?dir={{.RelPath}}">📂 {{.Name}}</a>
+            {{else}}
+              <a class="link-file" href="/view?path={{.RelPath}}">📄 {{.Name}}</a>
+            {{end}}
+          </td>
+          <td>{{if .IsDir}}目录{{else}}文件{{end}}</td>
+          <td class="col-size">{{.Size}}</td>
+          <td class="col-time">{{.ModTime}}</td>
+          <td class="col-ops">
+            {{if .IsDir}}
+              <a class="op" href="/?dir={{.RelPath}}">打开</a>
+            {{else}}
+              <a class="op" href="/view?path={{.RelPath}}">查看</a>
+              <a class="op" href="/raw?path={{.RelPath}}">预览</a>
+              <a class="op" href="/download?path={{.RelPath}}">下载</a>
+            {{end}}
+          </td>
+        </tr>
+      {{end}}
+      </tbody>
+    </table>
+    {{end}}
+  </div>
+
+  <footer class="footer">NAS 文件浏览器 · Go · 内核 {{.Sys.Kernel}} · 根目录 {{.RootName}}</footer>
+</div>
+</body>
+</html>

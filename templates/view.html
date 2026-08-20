@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{.FileName}} - NAS 文件浏览器</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="topbar">
+    <div class="brand">
+      <a class="back-btn" href="/?dir={{.DirRel}}">← 返回</a>
+      <div>
+        <h1>📄 {{.FileName}}</h1>
+        <p class="subtitle">{{.Size}} · 修改于 {{.ModTime}}</p>
+      </div>
+    </div>
+    <div class="view-ops">
+      <a class="btn" href="/raw?path={{.RelPath}}">🔗 在线预览</a>
+      <a class="btn btn-primary" href="/download?path={{.RelPath}}">⬇️ 下载</a>
+    </div>
+  </header>
+
+  {{if .IsText}}
+    <div class="code-box">
+      <pre class="code">{{.Content}}</pre>
+    </div>
+  {{else}}
+    <div class="binary-box">
+      <p>⚠️ 该文件不是文本文件（可能是二进制或图片等）。</p>
+      <p class="hint">可以使用「在线预览」直接在浏览器中打开，或「下载」保存到本地。</p>
+    </div>
+  {{end}}
+
+  <footer class="footer">NAS 文件浏览器 · {{.FileName}}</footer>
+</div>
+</body>
+</html>
