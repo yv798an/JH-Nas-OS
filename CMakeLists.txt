@@ -10,6 +10,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(NAS_BUILD_TESTS "Build unit tests" ON)
 option(NAS_TSAN "Enable ThreadSanitizer for the test build" ON)
 
+# 基准程序：宿主机默认构建；交叉编译默认跳过（产物不能在本机运行），
+# 但可用 -DNAS_BUILD_BENCH=ON 为板子交叉构建 io_bench / http_bench。
+if (CMAKE_CROSSCOMPILING)
+    set(_nas_bench_default OFF)
+else()
+    set(_nas_bench_default ON)
+endif()
+option(NAS_BUILD_BENCH "Build benchmark tools" ${_nas_bench_default})
+
 find_package(Threads REQUIRED)
 
 # TSan 只在“本机测试”构建里启用（上板交叉编译 NAS_BUILD_TESTS=OFF 时不启用）。
@@ -132,8 +141,8 @@ if (NAS_HAS_IO_URING)
     target_include_directories(nas_io PRIVATE ${URING_INCLUDE_DIR})
     target_link_libraries(nas_io PUBLIC ${URING_LIBRARY})
 
-    # 基准仅在宿主机（非交叉）构建，交叉产物无法在本机运行。
-    if (NOT CMAKE_CROSSCOMPILING)
+    # 宿主机默认构建；交叉编译需 -DNAS_BUILD_BENCH=ON（产物在板上跑）。
+    if (NAS_BUILD_BENCH)
         add_executable(io_bench bench/io_bench.cpp)
         target_link_libraries(io_bench PRIVATE nas_io)
         target_compile_options(io_bench PRIVATE -Wall -Wextra -O2)
@@ -146,8 +155,8 @@ endif()
 add_library(cpp_httplib INTERFACE)
 target_include_directories(cpp_httplib SYSTEM INTERFACE third_party/cpp-httplib)
 
-# HTTP 拉取压测客户端（bench/，仅宿主机）。
-if (NOT CMAKE_CROSSCOMPILING)
+# HTTP 拉取压测客户端（bench/，宿主机默认；交叉需 -DNAS_BUILD_BENCH=ON）。
+if (NAS_BUILD_BENCH)
     add_executable(http_bench bench/http_bench.cpp)
     target_link_libraries(http_bench PRIVATE cpp_httplib Threads::Threads)
     target_compile_options(http_bench PRIVATE -Wall -Wextra -O2)

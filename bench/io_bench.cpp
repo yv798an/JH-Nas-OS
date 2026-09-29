@@ -2,7 +2,11 @@
 //
 // 用法：
 //   io_bench [--file PATH] [--block KiB] [--size MiB]
+//            [--repeat N] [--drop-cache]
 // 无 --file 时在 /tmp 生成一个 size MiB 的测试文件。
+//
+// --repeat N      每种方案重复 N 次，报告 median/min/max（默认 1）
+// --drop-cache    每次计时前 drop page cache（需 root；用于测冷盘）
 //
 // 基于 Linux + liburing；未启用 io_uring 时打印说明并退出。
 
@@ -21,6 +25,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -32,6 +37,16 @@ std::uint64_t fileSize(const std::string& path) {
     struct stat st {};
     if (::stat(path.c_str(), &st) != 0) return 0;
     return static_cast<std::uint64_t>(st.st_size);
+}
+
+// drop 三档 page cache（需 root）。用于让每次计时都从冷盘开始。
+bool dropCaches() {
+    ::sync();
+    const int fd = ::open("/proc/sys/vm/drop_caches", O_WRONLY);
+    if (fd < 0) return false;
+    const ssize_t n = ::write(fd, "3\n", 2);
+    ::close(fd);
+    return n == 2;
 }
 
 double syncRead(const std::string& path, std::size_t block,
@@ -92,12 +107,46 @@ void makeFile(const std::string& path, std::uint64_t bytes) {
     ::close(fd);
 }
 
+using ReadFn = std::function<double(std::uint64_t&)>;
+
+// 重复跑同一方案；可每次前 drop cache。返回每次的吞吐 MiB/s。
+std::vector<double> benchRepeat(bool drop, int repeat, const ReadFn& run,
+                                std::uint64_t& outBytes) {
+    std::vector<double> tput;
+    tput.reserve(static_cast<std::size_t>(repeat));
+    for (int i = 0; i < repeat; ++i) {
+        if (drop) dropCaches();
+        std::uint64_t b = 0;
+        const double  t = run(b);
+        if (t <= 0) {
+            tput.push_back(-1.0);
+            continue;
+        }
+        outBytes = b;
+        tput.push_back(static_cast<double>(b) / 1048576.0 / t);
+    }
+    return tput;
+}
+
+void printStats(const std::string& label, std::vector<double> v) {
+    if (v.empty() ||
+        std::any_of(v.begin(), v.end(), [](double x) { return x < 0; })) {
+        std::printf("%-18s 不可用\n", label.c_str());
+        return;
+    }
+    std::sort(v.begin(), v.end());
+    std::printf("%-18s median %8.1f  min %8.1f  max %8.1f  MiB/s (n=%zu)\n",
+                label.c_str(), v[v.size() / 2], v.front(), v.back(), v.size());
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
     std::string   path;
-    std::size_t   block   = 64 * 1024;
-    std::uint64_t sizeMiB = 128;
+    std::size_t   block     = 64 * 1024;
+    std::uint64_t sizeMiB   = 128;
+    int           repeat    = 1;
+    bool          dropCache = false;
 
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
@@ -108,13 +157,23 @@ int main(int argc, char** argv) {
                         std::strtoull(argv[++i], nullptr, 10)) * 1024;
         } else if (a == "--size" && i + 1 < argc) {
             sizeMiB = std::strtoull(argv[++i], nullptr, 10);
+        } else if (a == "--repeat" && i + 1 < argc) {
+            repeat = std::atoi(argv[++i]);
+        } else if (a == "--drop-cache") {
+            dropCache = true;
         }
     }
+    if (repeat < 1) repeat = 1;
 
-    if (path.empty()) {
-        path = "/tmp/nas_io_bench.bin";
-        const std::uint64_t want = sizeMiB * 1024 * 1024;
-        if (fileSize(path) != want) makeFile(path, want);
+    if (path.empty()) path = "/tmp/nas_io_bench.bin";
+    // 文件不存在或为空时按 --size 生成；已存在的非空文件原样使用（避免误截断真实文件）。
+    if (fileSize(path) == 0) {
+        makeFile(path, sizeMiB * 1024 * 1024);
+        if (fileSize(path) == 0) {
+            std::printf("无法创建测试文件（目录不存在或只读？）: %s\n",
+                        path.c_str());
+            return 1;
+        }
     }
 
     const std::uint64_t fsize = fileSize(path);
@@ -124,8 +183,10 @@ int main(int argc, char** argv) {
     }
 
     std::printf("== io_uring 读取基准 ==\n");
-    std::printf("file=%s  size=%.1f MiB  block=%zu KiB\n\n", path.c_str(),
-                static_cast<double>(fsize) / 1048576.0, block / 1024);
+    std::printf(
+        "file=%s  size=%.1f MiB  block=%zu KiB  repeat=%d  drop_cache=%s\n\n",
+        path.c_str(), static_cast<double>(fsize) / 1048576.0, block / 1024,
+        repeat, dropCache ? "on" : "off");
 
     {
         nas::IoUring probe;
@@ -136,21 +197,20 @@ int main(int argc, char** argv) {
     }
 
     std::uint64_t bytes = 0;
-    const double  s     = syncRead(path, block, bytes);
-    if (s > 0) {
-        std::printf("%-18s %8.1f MiB/s  %8.3f s\n", "sync(read)",
-                    static_cast<double>(bytes) / 1048576.0 / s, s);
+
+    {
+        const ReadFn run = [&](std::uint64_t& b) {
+            return syncRead(path, block, b);
+        };
+        printStats("sync(read)", benchRepeat(dropCache, repeat, run, bytes));
     }
 
     for (const unsigned depth : {1u, 4u, 16u, 64u}) {
-        const double t = uringRead(path, block, depth, bytes);
-        if (t <= 0) {
-            std::printf("io_uring QD=%-3u      不可用\n", depth);
-            continue;
-        }
-        const std::string label = "io_uring QD=" + std::to_string(depth);
-        std::printf("%-18s %8.1f MiB/s  %8.3f s\n", label.c_str(),
-                    static_cast<double>(bytes) / 1048576.0 / t, t);
+        const ReadFn run = [&](std::uint64_t& b) {
+            return uringRead(path, block, depth, b);
+        };
+        printStats("io_uring QD=" + std::to_string(depth),
+                   benchRepeat(dropCache, repeat, run, bytes));
     }
     return 0;
 }
