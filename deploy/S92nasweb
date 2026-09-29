@@ -1,0 +1,58 @@
+#!/bin/sh
+#
+# nas-server 启动脚本（BusyBox init / Buildroot）
+# 放置位置：镜像内 /etc/init.d/S92nasweb（由 overlay 注入，需 chmod +x）
+#
+# 进程模型：程序前台运行，由本脚本用 start-stop-daemon 后台化并写 pidfile。
+# 停止时发送 SIGTERM，程序捕获后优雅退出。
+#
+DAEMON="/usr/bin/nas-server"
+CONF="/etc/nas/nas.conf"
+PIDFILE="/run/nas/nasweb.pid"
+
+start() {
+	printf "Starting nas-web: "
+	mkdir -p /run/nas
+
+	if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+		echo "already running"
+		return 0
+	fi
+
+	start-stop-daemon --start --quiet --background --make-pidfile \
+		--pidfile "$PIDFILE" --exec "$DAEMON" -- \
+		--serve --config "$CONF"
+	echo "OK"
+}
+
+stop() {
+	printf "Stopping nas-web: "
+	if [ -f "$PIDFILE" ]; then
+		start-stop-daemon --stop --quiet --pidfile "$PIDFILE" \
+			--retry TERM/5/KILL/1
+		rm -f "$PIDFILE"
+	else
+		start-stop-daemon --stop --quiet --exec "$DAEMON" 2>/dev/null
+	fi
+	echo "OK"
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart|reload)
+		stop
+		sleep 1
+		start
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+		;;
+esac
+
+exit $?

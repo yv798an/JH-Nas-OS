@@ -1,0 +1,37 @@
+# nas-server 运行配置示例
+# 镜像内放置到：/etc/nas/nas.conf（由 Buildroot overlay 注入）
+# 优先级：命令行 > 本文件 > 内置默认
+# 格式：每行 `key = value`，`#` 起注释。未知键会导致启动失败（防拼写错误）。
+
+# ---- HTTP 服务 ----
+# 监听地址：0.0.0.0 对外可访问；127.0.0.1 仅本机/隧道访问（更安全）
+http.host = 0.0.0.0
+http.port = 8080
+
+# ---- 共享目录白名单 ----
+# 允许对外暴露的挂载点根目录，逗号分隔。实际挂载由 automount.sh 负责，
+# 这里只是过滤策略（ShareRegistry）。
+share.roots = /media
+
+# ---- 日志 ----
+# 镜像内建议绝对路径：/var/log/nas-server.log
+log.file = /var/log/nas-server.log
+# TRACE / DEBUG / INFO / WARN / ERROR / FATAL / OFF
+log.level = INFO
+
+# ---- 网页 UI ----
+# 可选：若该目录下存在 index.html 则优先使用它（改界面免重编译），
+# 否则回退到编译进二进制的内嵌版本。留空 = 始终用内嵌版本。
+web.dir =
+
+# ---- 下载 I/O ----
+# 需编译期检测到 liburing；开启后大文件（>= thresholdKb）下载走 io_uring 异步流水线。
+# 没有 liburing 或文件较小则自动回退同步读。
+io.uring = true
+io.blockKb = 128
+io.depth = 8
+io.thresholdKb = 4096
+
+# ---- 系统状态轮询 ----
+# 重读 /proc/mounts 的周期（毫秒），纯轮询机制
+monitor.pollMs = 1000
