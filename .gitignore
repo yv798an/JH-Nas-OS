@@ -23,6 +23,10 @@ http_bench
 # Logs
 *.log
 
+# Local test data / benchmark results
+NAS_Test/
+NAS_Test_board/
+
 # Editor / OS
 .vscode/
 .idea/
