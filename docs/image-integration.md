@@ -137,6 +137,37 @@ S92nasweb   -> 本程序
 
   探测失败 → watchdog 停止喂狗 → 硬件复位，从而恢复卡死的服务。
 
+### 4.6 网络 / 回环启动契约（直接决定看门狗是否误复位）
+
+看门狗探活（§4.5）由 `nas-server --health-check` 打 `http.host:http.port`；
+当 `http.host = 0.0.0.0` 时探活自动改连回环 `127.0.0.1`（`HealthProbe.cpp`）。
+因此**只要 `lo` 没有 `127.0.0.1`（或处于 DOWN），探活必然失败**，watchdog 连判不健康后触发硬件复位。
+
+**已踩过的坑（实测复位循环）**：镜像曾用 BusyBox `ifup -a`（`/etc/init.d/S40network`）拉起网络，
+但极简环境下它**并未把 `lo`/`eth0` 置为 UP**，导致开机后 `lo` 无地址 → 探活 `No route to host`
+→ 复位 → 循环。
+
+**契约（已落地）**：
+
+- 由 `/etc/init.d/S30netup`（排在 `S11modules` 之后、`S92nasweb` 之前）用**显式 `ip` 命令**
+  保证 `lo`、`eth0` 就绪，**不依赖 `ifup`**：
+
+  ```sh
+  ip link set lo up
+  ip addr add 127.0.0.1/8 dev lo 2>/dev/null
+  ip link set eth0 up
+  ip addr add 192.168.137.200/24 dev eth0 2>/dev/null   # 或改用 udhcpc -i eth0 -q
+  ip route add default via 192.168.137.1 2>/dev/null
+  ```
+
+- 原 `S40network`（`ifup -a`）已停用（改名 `/root/S40network.disabled`），避免与 `S30netup` 打架。
+- **启动顺序**：`S30netup` → `S91smb` → `S92nasweb` → `S95watchdog`。
+- 看门狗超时须留足余量：`watchdog-timeout = 60`、`test-timeout = 20`
+  （原 `15/15` 与检查脚本最坏耗时 ~14s 相等，属临界，易误复位）。
+
+**验收**：重启后**无需任何手动操作**，`ip addr show lo` 含 `127.0.0.1`、
+`nas-server --health-check` 退出 `0`、连续多次探活全 `0`。
+
 ---
 
 ## 5. 组件接口关系
@@ -226,6 +257,7 @@ S92nasweb   -> 本程序
 | 二进制 | `/usr/bin/nas-server` |
 | 配置文件 | `/etc/nas/nas.conf` |
 | init 脚本 | `/etc/init.d/S92nasweb` |
+| 网络启动脚本 | `/etc/init.d/S30netup`（显式拉起 lo/eth0） |
 | 日志 | `/var/log/nas-server.log` |
 | pidfile（init 脚本持有） | `/run/nas/nasweb.pid` |
 | 探活脚本（watchdog 调用） | `/usr/bin/nas-web-check.sh` |
@@ -239,6 +271,7 @@ S92nasweb   -> 本程序
 - 停服务：`/etc/init.d/S92nasweb stop` 后进程干净退出、pidfile 消失、端口释放。
 - 改配置：只改 `/etc/nas/nas.conf` 重启即生效，二进制不变。
 - 探活：服务运行时 `nas-server --health-check` 退出 `0`，停服后退出非 `0`。
+- 开机网络：重启后 `lo`/`eth0` 自动就绪（`S30netup`），无需手动干预，看门狗不误复位。
 - 断网 / 无 U 盘：Web 不崩，返回明确状态。
 
 ---
