@@ -1,0 +1,32 @@
+Internal ctest changing into directory: /root/code/c-project/NAS-Web-Cpp/build-host
+Test project /root/code/c-project/NAS-Web-Cpp/build-host
+      Start  1: ringbuffer
+ 1/13 Test  #1: ringbuffer .......................   Passed    3.03 sec
+      Start  2: logger
+ 2/13 Test  #2: logger ...........................   Passed    3.11 sec
+      Start  3: fake_systemstate
+ 3/13 Test  #3: fake_systemstate .................   Passed    0.35 sec
+      Start  4: linux_systemstate
+ 4/13 Test  #4: linux_systemstate ................   Passed    0.23 sec
+      Start  5: system_monitor
+ 5/13 Test  #5: system_monitor ...................   Passed    0.02 sec
+      Start  6: http
+ 6/13 Test  #6: http .............................   Passed    0.02 sec
+      Start  7: health_probe
+ 7/13 Test  #7: health_probe .....................   Passed    0.04 sec
+      Start  8: config
+ 8/13 Test  #8: config ...........................   Passed    0.02 sec
+      Start  9: file_service
+ 9/13 Test  #9: file_service .....................   Passed    0.02 sec
+      Start 10: file_api
+10/13 Test #10: file_api .........................   Passed    0.03 sec
+      Start 11: web_ui
+11/13 Test #11: web_ui ...........................   Passed    0.02 sec
+      Start 12: buffer_pool
+12/13 Test #12: buffer_pool ......................   Passed    0.02 sec
+      Start 13: io_uring
+13/13 Test #13: io_uring .........................   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 13
+
+Total Test time (real) =   6.95 sec

@@ -1,0 +1,109 @@
+[00:22:39] 创建测试文件 /media/sdb1/nas_bench_128MiB.bin (128 MiB) ...
+[00:22:57] OUT=/tmp/nas-bench-out-20261025-125741
+[00:22:57] data_dir=/media/sdb1 fstype=ext4 file=/media/sdb1/nas_bench_128MiB.bin
+[00:22:57] IO cold: blocks=64 depths=1,4,8,16,32,64 repeat=3
+== I/O 基准 ==
+file=/media/sdb1/nas_bench_128MiB.bin size=128.0 MiB cache=cold repeat=3 warmup=0
+
+-- block=64 KiB --
+  sync           median     19.0  min     18.9  max     19.0 MiB/s  CPU    8.8%     4.78 cpu-s/GiB  p50   359.1 us  p95  6561.2  p99  6664.3
+  uring_qd1      median     19.0  min     19.0  max     19.0 MiB/s  CPU   10.6%     5.72 cpu-s/GiB  p50   678.2 us  p95  6534.9  p99  6671.8
+  uring_qd4      median     19.8  min     18.9  max     19.8 MiB/s  CPU   10.4%     5.37 cpu-s/GiB  p50     4.2 us  p95 13269.2  p99 13427.9
+  uring_qd8      median     19.0  min     18.9  max     19.6 MiB/s  CPU    9.6%     5.19 cpu-s/GiB  p50     3.5 us  p95 25336.4  p99 26640.0
+  uring_qd16     median     19.0  min     18.9  max     19.6 MiB/s  CPU    9.7%     5.23 cpu-s/GiB  p50     3.8 us  p95 33140.1  p99 45716.0
+  uring_qd32     median     19.0  min     18.9  max     19.0 MiB/s  CPU    9.9%     5.36 cpu-s/GiB  p50    28.2 us  p95    43.2  p99 104369.6
+  uring_qd64     median     19.0  min     19.0  max     19.6 MiB/s  CPU   10.1%     5.33 cpu-s/GiB  p50     4.5 us  p95    40.0  p99 177991.5
+
+[00:25:20] IO hot: blocks=64 depths=1,4,8,16,32,64 repeat=3
+== I/O 基准 ==
+file=/media/sdb1/nas_bench_128MiB.bin size=128.0 MiB cache=hot repeat=3 warmup=1
+
+预热 page cache ...
+-- block=64 KiB --
+  sync           median   1261.8  min   1258.0  max   1262.3 MiB/s  CPU   99.9%     0.81 cpu-s/GiB  p50    48.5 us  p95    51.5  p99    54.8
+  uring_qd1      median   1042.9  min    955.5  max   1045.8 MiB/s  CPU  110.9%     1.09 cpu-s/GiB  p50    59.0 us  p95    65.2  p99   113.8
+  uring_qd4      median    971.2  min    966.7  max   1048.3 MiB/s  CPU  103.4%     1.05 cpu-s/GiB  p50     1.2 us  p95   236.5  p99   406.8
+  uring_qd8      median    998.5  min    997.7  max   1001.8 MiB/s  CPU  104.7%     1.07 cpu-s/GiB  p50     1.2 us  p95   482.5  p99   505.9
+  uring_qd16     median    913.8  min    913.3  max    916.6 MiB/s  CPU  102.4%     1.14 cpu-s/GiB  p50     1.0 us  p95   675.9  p99   975.4
+  uring_qd32     median    799.5  min    795.1  max    838.6 MiB/s  CPU  100.6%     1.28 cpu-s/GiB  p50     1.0 us  p95     5.4  p99  1712.0
+  uring_qd64     median    769.0  min    768.9  max    783.8 MiB/s  CPU  102.1%     1.34 cpu-s/GiB  p50     1.2 us  p95     2.5  p99  3520.1
+
+[00:25:24] 校验 sync/io_uring 内容哈希 ...
+== I/O 基准 ==
+file=/media/sdb1/nas_bench_128MiB.bin size=128.0 MiB cache=none repeat=1 warmup=0
+
+VERIFY sync block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd1 block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd8 block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd64 block=64 hash=d9cbadf124222325 bytes=134217728
+[00:25:26] skip perf stat
+[00:25:26] skip flamegraph
+[00:25:26] HTTP sync ...（client/server 同板，CPU 会互相竞争）
+[00:25:28] HTTP sync threads=1
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=sync-t1 threads=1 rounds=3 warmup=0
+requests=3 bytes=402653184 time=2.362 s throughput=162.6 MiB/s errors=0
+cpu=2.353 s (user=1.445 sys=0.908) cpu_pct=99.6% cpu_s_per_gib=6.275 p50=785.042 ms p95=793.109 ms p99=793.826 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:31]   server_cpu_pct=28.52 wall=3.050 rc=0
+[00:25:31] HTTP sync threads=2
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=sync-t2 threads=2 rounds=3 warmup=0
+requests=6 bytes=805306368 time=2.463 s throughput=311.8 MiB/s errors=0
+cpu=4.902 s (user=2.859 sys=2.044) cpu_pct=199.0% cpu_s_per_gib=6.536 p50=814.192 ms p95=835.187 ms p99=835.364 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:34]   server_cpu_pct=64.13 wall=3.150 rc=0
+[00:25:34] HTTP sync threads=4
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=sync-t4 threads=4 rounds=3 warmup=0
+requests=12 bytes=1610612736 time=3.799 s throughput=404.4 MiB/s errors=0
+cpu=10.066 s (user=5.859 sys=4.208) cpu_pct=265.0% cpu_s_per_gib=6.711 p50=1226.458 ms p95=1371.704 ms p99=1397.769 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:39]   server_cpu_pct=94.64 wall=4.480 rc=0
+[00:25:39] HTTP sync threads=8
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=sync-t8 threads=8 rounds=3 warmup=0
+requests=24 bytes=3221225472 time=7.476 s throughput=410.9 MiB/s errors=0
+cpu=20.442 s (user=11.928 sys=8.514) cpu_pct=273.4% cpu_s_per_gib=6.814 p50=2334.377 ms p95=2890.480 ms p99=2931.060 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:47]   server_cpu_pct=108.10 wall=8.150 rc=0
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=sync-verify threads=1 rounds=1 warmup=0
+requests=1 bytes=134217728 time=0.809 s throughput=158.3 MiB/s errors=0
+cpu=0.801 s (user=0.513 sys=0.288) cpu_pct=99.0% cpu_s_per_gib=6.407 p50=808.239 ms p95=808.239 ms p99=808.239 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:48] HTTP uring ...（client/server 同板，CPU 会互相竞争）
+[00:25:49] HTTP uring threads=1
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=uring-t1 threads=1 rounds=3 warmup=0
+requests=3 bytes=402653184 time=2.501 s throughput=153.5 MiB/s errors=0
+cpu=2.481 s (user=1.424 sys=1.057) cpu_pct=99.2% cpu_s_per_gib=6.616 p50=832.101 ms p95=836.226 ms p99=836.592 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:53]   server_cpu_pct=22.15 wall=3.160 rc=0
+[00:25:53] HTTP uring threads=2
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=uring-t2 threads=2 rounds=3 warmup=0
+requests=6 bytes=805306368 time=2.620 s throughput=293.2 MiB/s errors=0
+cpu=5.191 s (user=3.168 sys=2.024) cpu_pct=198.2% cpu_s_per_gib=6.922 p50=873.480 ms p95=879.019 ms p99=879.541 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:25:56]   server_cpu_pct=44.07 wall=3.290 rc=0
+[00:25:56] HTTP uring threads=4
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=uring-t4 threads=4 rounds=3 warmup=0
+requests=12 bytes=1610612736 time=4.472 s throughput=343.5 MiB/s errors=0
+cpu=10.750 s (user=6.088 sys=4.662) cpu_pct=240.4% cpu_s_per_gib=7.167 p50=1411.231 ms p95=1611.185 ms p99=1650.724 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:26:01]   server_cpu_pct=60.47 wall=5.160 rc=0
+[00:26:01] HTTP uring threads=8
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=uring-t8 threads=8 rounds=3 warmup=0
+requests=24 bytes=3221225472 time=8.760 s throughput=350.7 MiB/s errors=0
+cpu=21.998 s (user=12.062 sys=9.936) cpu_pct=251.1% cpu_s_per_gib=7.333 p50=2834.453 ms p95=3212.740 ms p99=3213.565 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:26:11]   server_cpu_pct=67.80 wall=9.440 rc=0
+url=http://127.0.0.1:8080/api/download?path=/media/sdb1/nas_bench_128MiB.bin&download=1
+label=uring-verify threads=1 rounds=1 warmup=0
+requests=1 bytes=134217728 time=0.845 s throughput=151.5 MiB/s errors=0
+cpu=0.834 s (user=0.452 sys=0.381) cpu_pct=98.7% cpu_s_per_gib=6.668 p50=844.278 ms p95=844.278 ms p99=844.278 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0
+[00:26:11] 完成。结果目录: /tmp/nas-bench-out-20261025-125741

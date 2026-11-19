@@ -28,6 +28,8 @@ web.dir =
 # 需编译期检测到 liburing；开启后大文件（>= thresholdKb）下载走 io_uring 异步流水线。
 # 没有 liburing 或文件较小则自动回退同步读。
 io.uring = true
+# 异步交接方式：yield = 历史忙等（基线）；condvar = 互斥量+条件变量阻塞等待
+io.handoff = yield
 io.blockKb = 128
 io.depth = 8
 io.thresholdKb = 4096

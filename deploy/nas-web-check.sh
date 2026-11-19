@@ -5,7 +5,7 @@
 # 放置：/usr/bin/nas-web-check.sh（chmod +x）
 # 由 /etc/watchdog.conf 中的 test-binary 周期调用：
 #     test-binary = /usr/bin/nas-web-check.sh
-#     test-timeout = 15
+#     test-timeout = 20
 #
 # watchdog 的 test-binary 不支持传参，故用本脚本转发到 nas-server 的
 # --health-check 子命令（对配置里的 http.host:http.port 探 /api/health）。

@@ -1,0 +1,13 @@
+== I/O 基准 ==
+file=/media/sdb1/nas_bench_128MiB.bin size=128.0 MiB cache=hot repeat=3 warmup=1
+
+预热 page cache ...
+-- block=64 KiB --
+  sync           median   1256.6  min   1255.5  max   1257.8 MiB/s  CPU  100.0%     0.81 cpu-s/GiB  p50    48.8 us  p95    51.2  p99    53.5
+  uring_qd1      median   1130.1  min   1129.7  max   1132.3 MiB/s  CPU  194.6%     1.76 cpu-s/GiB  p50    54.2 us  p95    56.8  p99    59.8
+  uring_qd4      median   1102.3  min   1096.8  max   1103.2 MiB/s  CPU  195.6%     1.82 cpu-s/GiB  p50     1.0 us  p95   223.0  p99   233.8
+  uring_qd8      median   1032.7  min   1032.6  max   1035.2 MiB/s  CPU  196.4%     1.94 cpu-s/GiB  p50     1.0 us  p95   468.5  p99   483.8
+  uring_qd16     median    931.0  min    930.8  max    932.4 MiB/s  CPU  197.8%     2.18 cpu-s/GiB  p50     1.0 us  p95   959.6  p99  1045.0
+  uring_qd32     median    858.0  min    856.2  max    859.9 MiB/s  CPU  197.0%     2.35 cpu-s/GiB  p50     1.0 us  p95     1.2  p99  2241.5
+  uring_qd64     median    823.5  min    822.1  max    827.8 MiB/s  CPU  201.5%     2.50 cpu-s/GiB  p50     1.0 us  p95     1.2  p99  4264.5
+

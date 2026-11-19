@@ -1,0 +1,17 @@
+bench,scenario,scheme,cloud_mib_s,board_sda1_mib_s,board_sdb1_mib_s,note
+io_bench,cold,sync,143.0,170.3,19.0,64KiB; board=2026-10 current code; cloud=2026-09 old code
+io_bench,cold,QD1,143.5,222.1,19.9,64KiB
+io_bench,cold,QD4,143.3,220.3,19.9,64KiB
+io_bench,cold,QD16,142.7,235.8,19.9,64KiB
+io_bench,cold,QD64,143.9,234.3,19.9,64KiB
+io_bench,hot,sync,3931.1,1274.2,1281.2,64KiB; cloud hot sync contaminated by cold read
+io_bench,hot,QD1,4563.8,1168.8,1172.5,64KiB
+io_bench,hot,QD4,4390.8,1118.4,1125.2,64KiB
+io_bench,hot,QD16,3955.7,939.1,945.8,64KiB
+io_bench,hot,QD64,4149.7,799.5,806.5,64KiB
+http_bench,hot,t1_sync,1030.5,159.3,160.4,board=current code; cloud=2026-09 old code
+http_bench,hot,t1_uring,956.0,153.7,154.3,board=current code; cloud=2026-09 old code
+http_bench,hot,t4_sync,,415.5,382.2,board=current code
+http_bench,hot,t4_uring,,262.6,263.9,board=current code
+http_bench,hot,t8_sync,1527.4,413.1,414.3,board=current code; cloud=2026-09 old code
+http_bench,hot,t8_uring,855.4,263.7,259.0,board=current code; cloud=2026-09 old code

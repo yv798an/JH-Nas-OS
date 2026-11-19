@@ -1,0 +1,85 @@
+== I/O 基准 ==
+file=/media/sda1/nas_bench_128MiB.bin size=128.0 MiB cache=hot repeat=3 warmup=1
+
+预热 page cache ...
+-- block=4 KiB --
+  sync           median    938.7  min    924.5  max    954.2 MiB/s  CPU   99.9%     1.09 cpu-s/GiB  p50     3.8 us  p95     4.2  p99     4.5
+  uring_qd1      median    596.2  min    595.8  max    598.5 MiB/s  CPU  198.2%     3.41 cpu-s/GiB  p50     6.2 us  p95     6.5  p99     7.2
+  uring_qd4      median    670.0  min    668.8  max    673.3 MiB/s  CPU  195.7%     3.00 cpu-s/GiB  p50     0.5 us  p95    20.2  p99    21.0
+  uring_qd8      median    700.4  min    692.1  max    702.5 MiB/s  CPU  197.4%     2.88 cpu-s/GiB  p50     0.5 us  p95    37.5  p99    38.8
+  uring_qd16     median    708.2  min    704.8  max    711.6 MiB/s  CPU  198.6%     2.86 cpu-s/GiB  p50     0.5 us  p95    67.2  p99    74.2
+  uring_qd32     median    687.3  min    684.9  max    703.7 MiB/s  CPU  195.7%     2.92 cpu-s/GiB  p50     0.5 us  p95     0.5  p99   150.8
+  uring_qd64     median    672.7  min    666.7  max    677.5 MiB/s  CPU  198.6%     3.00 cpu-s/GiB  p50     0.5 us  p95     0.5  p99   302.2
+
+-- block=8 KiB --
+  sync           median   1151.9  min   1150.5  max   1156.7 MiB/s  CPU   99.9%     0.89 cpu-s/GiB  p50     6.2 us  p95     7.0  p99     7.5
+  uring_qd1      median    814.7  min    808.3  max    835.2 MiB/s  CPU  194.7%     2.45 cpu-s/GiB  p50     8.5 us  p95     9.8  p99    10.8
+  uring_qd4      median    864.0  min    858.9  max    870.7 MiB/s  CPU  198.1%     2.35 cpu-s/GiB  p50     0.5 us  p95    33.2  p99    34.0
+  uring_qd8      median    887.7  min    886.5  max    887.9 MiB/s  CPU  196.9%     2.27 cpu-s/GiB  p50     0.5 us  p95    63.0  p99    64.2
+  uring_qd16     median    884.0  min    883.2  max    885.2 MiB/s  CPU  197.2%     2.29 cpu-s/GiB  p50     0.5 us  p95   116.1  p99   127.2
+  uring_qd32     median    855.3  min    855.2  max    858.6 MiB/s  CPU  199.4%     2.38 cpu-s/GiB  p50     0.5 us  p95     0.5  p99   260.2
+  uring_qd64     median    811.6  min    809.2  max    818.1 MiB/s  CPU  198.1%     2.49 cpu-s/GiB  p50     0.5 us  p95     0.5  p99   543.5
+
+-- block=16 KiB --
+  sync           median   1180.7  min   1178.2  max   1182.1 MiB/s  CPU  100.0%     0.87 cpu-s/GiB  p50    12.8 us  p95    13.5  p99    13.8
+  uring_qd1      median    935.8  min    932.2  max    938.0 MiB/s  CPU  197.9%     2.16 cpu-s/GiB  p50    16.2 us  p95    17.0  p99    17.8
+  uring_qd4      median    994.3  min    991.5  max    994.8 MiB/s  CPU  199.6%     2.06 cpu-s/GiB  p50     0.5 us  p95    59.8  p99    60.8
+  uring_qd8      median    997.2  min    996.3  max   1000.1 MiB/s  CPU  199.3%     2.05 cpu-s/GiB  p50     0.5 us  p95   117.2  p99   119.0
+  uring_qd16     median    973.5  min    973.2  max    977.0 MiB/s  CPU  195.2%     2.05 cpu-s/GiB  p50     0.5 us  p95   223.5  p99   241.5
+  uring_qd32     median    922.4  min    922.3  max    922.6 MiB/s  CPU  198.3%     2.20 cpu-s/GiB  p50     0.5 us  p95     0.5  p99   508.8
+  uring_qd64     median    835.5  min    835.3  max    836.8 MiB/s  CPU  198.0%     2.42 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  1120.8
+
+-- block=32 KiB --
+  sync           median   1220.0  min   1219.0  max   1221.0 MiB/s  CPU   99.9%     0.84 cpu-s/GiB  p50    25.0 us  p95    25.8  p99    26.2
+  uring_qd1      median   1090.3  min   1088.6  max   1094.3 MiB/s  CPU  198.1%     1.86 cpu-s/GiB  p50    28.0 us  p95    29.2  p99    30.0
+  uring_qd4      median   1098.4  min   1094.2  max   1101.0 MiB/s  CPU  197.9%     1.84 cpu-s/GiB  p50     0.5 us  p95   110.8  p99   112.5
+  uring_qd8      median   1075.5  min   1073.2  max   1076.6 MiB/s  CPU  199.3%     1.90 cpu-s/GiB  p50     0.5 us  p95   223.8  p99   227.0
+  uring_qd16     median   1021.8  min   1020.7  max   1022.9 MiB/s  CPU  196.8%     1.97 cpu-s/GiB  p50     0.5 us  p95   442.5  p99   473.5
+  uring_qd32     median    918.0  min    915.7  max    921.1 MiB/s  CPU  194.1%     2.16 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  1053.0
+  uring_qd64     median    812.4  min    810.7  max    814.5 MiB/s  CPU  198.3%     2.50 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  2375.5
+
+-- block=64 KiB --
+  sync           median   1274.2  min   1272.0  max   1276.4 MiB/s  CPU  100.0%     0.80 cpu-s/GiB  p50    48.2 us  p95    49.5  p99    50.5
+  uring_qd1      median   1168.8  min   1165.6  max   1178.0 MiB/s  CPU  191.4%     1.68 cpu-s/GiB  p50    52.5 us  p95    54.5  p99    55.8
+  uring_qd4      median   1118.4  min   1116.3  max   1119.2 MiB/s  CPU  199.6%     1.83 cpu-s/GiB  p50     0.5 us  p95   221.2  p99   227.4
+  uring_qd8      median   1047.9  min   1047.7  max   1048.6 MiB/s  CPU  197.8%     1.93 cpu-s/GiB  p50     0.5 us  p95   467.2  p99   477.4
+  uring_qd16     median    939.1  min    938.5  max    941.4 MiB/s  CPU  196.1%     2.13 cpu-s/GiB  p50     0.5 us  p95   987.4  p99  1050.3
+  uring_qd32     median    844.0  min    843.9  max    844.4 MiB/s  CPU  199.7%     2.42 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  2337.2
+  uring_qd64     median    799.5  min    798.2  max    799.5 MiB/s  CPU  198.7%     2.55 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  4900.6
+
+-- block=128 KiB --
+  sync           median   1287.8  min   1278.3  max   1290.2 MiB/s  CPU  100.1%     0.80 cpu-s/GiB  p50    96.2 us  p95    98.2  p99   103.9
+  uring_qd1      median   1196.7  min   1190.4  max   1201.9 MiB/s  CPU  197.6%     1.68 cpu-s/GiB  p50   103.2 us  p95   106.0  p99   134.8
+  uring_qd4      median   1049.7  min   1048.4  max   1062.6 MiB/s  CPU  195.3%     1.88 cpu-s/GiB  p50     0.5 us  p95   479.8  p99   502.8
+  uring_qd8      median    943.4  min    940.0  max    948.1 MiB/s  CPU  197.7%     2.15 cpu-s/GiB  p50     0.5 us  p95  1048.2  p99  1080.9
+  uring_qd16     median    856.4  min    854.3  max    857.8 MiB/s  CPU  198.4%     2.37 cpu-s/GiB  p50     0.5 us  p95  2236.1  p99  2345.4
+  uring_qd32     median    816.6  min    815.5  max    819.8 MiB/s  CPU  198.4%     2.48 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  4870.2
+  uring_qd64     median    809.3  min    796.8  max    822.1 MiB/s  CPU  203.3%     2.59 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  9682.8
+
+-- block=256 KiB --
+  sync           median   1257.0  min   1256.4  max   1261.0 MiB/s  CPU  100.0%     0.81 cpu-s/GiB  p50   197.0 us  p95   200.2  p99   241.5
+  uring_qd1      median   1138.0  min   1136.4  max   1139.8 MiB/s  CPU  197.7%     1.78 cpu-s/GiB  p50   217.5 us  p95   223.3  p99   265.1
+  uring_qd4      median    922.8  min    920.9  max    936.7 MiB/s  CPU  194.6%     2.16 cpu-s/GiB  p50     0.5 us  p95  1104.6  p99  1135.9
+  uring_qd8      median    856.3  min    852.4  max    863.8 MiB/s  CPU  197.4%     2.35 cpu-s/GiB  p50     0.5 us  p95  2326.1  p99  2388.6
+  uring_qd16     median    826.9  min    810.4  max    828.7 MiB/s  CPU  200.3%     2.51 cpu-s/GiB  p50     0.5 us  p95  4571.9  p99  4915.0
+  uring_qd32     median    810.4  min    802.8  max    831.8 MiB/s  CPU  202.4%     2.56 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  9844.1
+  uring_qd64     median    838.6  min    820.0  max    851.1 MiB/s  CPU  211.1%     2.59 cpu-s/GiB  p50     0.5 us  p95     0.5  p99 18756.3
+
+-- block=512 KiB --
+  sync           median   1188.4  min   1186.9  max   1191.1 MiB/s  CPU  100.0%     0.86 cpu-s/GiB  p50   417.5 us  p95   425.0  p99   497.5
+  uring_qd1      median   1026.2  min   1024.2  max   1029.3 MiB/s  CPU  197.5%     1.97 cpu-s/GiB  p50   483.0 us  p95   517.9  p99   557.2
+  uring_qd4      median    845.6  min    836.9  max    852.0 MiB/s  CPU  199.5%     2.40 cpu-s/GiB  p50     0.5 us  p95  2412.5  p99  2457.7
+  uring_qd8      median    810.9  min    802.5  max    814.6 MiB/s  CPU  199.6%     2.52 cpu-s/GiB  p50     0.5 us  p95  4928.2  p99  5028.5
+  uring_qd16     median    815.4  min    799.3  max    819.0 MiB/s  CPU  204.1%     2.56 cpu-s/GiB  p50     0.5 us  p95  9066.4  p99  9954.6
+  uring_qd32     median    828.8  min    828.1  max    850.4 MiB/s  CPU  209.5%     2.59 cpu-s/GiB  p50     0.5 us  p95     0.5  p99 19199.5
+  uring_qd64     median    852.1  min    852.0  max    852.1 MiB/s  CPU  252.8%     3.04 cpu-s/GiB  p50     0.5 us  p95     0.5  p99 37377.8
+
+-- block=1024 KiB --
+  sync           median   1040.8  min   1029.9  max   1041.8 MiB/s  CPU  100.3%     0.99 cpu-s/GiB  p50   957.2 us  p95  1008.4  p99  1047.6
+  uring_qd1      median    821.6  min    821.4  max    822.3 MiB/s  CPU  199.3%     2.48 cpu-s/GiB  p50  1229.6 us  p95  1282.6  p99  1317.5
+  uring_qd4      median    780.1  min    778.7  max    780.9 MiB/s  CPU  202.3%     2.65 cpu-s/GiB  p50     0.5 us  p95  5214.9  p99  5298.4
+  uring_qd8      median    799.3  min    799.2  max    801.9 MiB/s  CPU  208.0%     2.66 cpu-s/GiB  p50     0.5 us  p95  9980.1  p99 10176.1
+  uring_qd16     median    826.1  min    822.5  max    826.4 MiB/s  CPU  214.4%     2.66 cpu-s/GiB  p50     0.5 us  p95 15412.8  p99 19505.1
+  uring_qd32     median    858.8  min    857.3  max    859.2 MiB/s  CPU  246.6%     2.94 cpu-s/GiB  p50     0.5 us  p95     0.8  p99 37270.4
+  uring_qd64     median    668.4  min    666.0  max    805.1 MiB/s  CPU  266.5%     4.08 cpu-s/GiB  p50     0.5 us  p95     0.5  p99 82270.2
+

@@ -26,6 +26,7 @@ namespace nas {
 // 下载 I/O 选项。useUring 只有在编译期检测到 liburing 时才生效，否则自动回退同步。
 struct DownloadIoOptions {
     bool          useUring       = false;
+    bool          useCondvar      = false;  // true: 条件变量交接；false: yield 忙等
     std::size_t   blockSize      = 128 * 1024;
     unsigned      depth          = 8;
     std::uint64_t thresholdBytes = 4 * 1024 * 1024;  // 文件 >= 阈值才用 io_uring

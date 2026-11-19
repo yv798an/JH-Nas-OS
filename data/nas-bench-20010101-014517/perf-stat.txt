@@ -1,0 +1,229 @@
+perf_events=cycles,instructions,branches,branch-misses,cache-references,cache-misses,task-clock,context-switches,cpu-migrations,page-faults
+
+### cache=cold scheme=sync
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=cold repeat=1 warmup=0
+
+-- block=64 KiB --
+  sync           median    167.7  min    167.7  max    167.7 MiB/s  CPU   53.3%     3.26 cpu-s/GiB  p50   325.8 us  p95   656.9  p99   766.4
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache cold --mode sync':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.493342500 seconds time elapsed
+
+       0.009953000 seconds user
+       0.268754000 seconds sys
+
+
+
+### cache=cold scheme=uring_qd1
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=cold repeat=1 warmup=0
+
+-- block=64 KiB --
+  uring_qd1      median    220.2  min    220.2  max    220.2 MiB/s  CPU  140.5%     6.53 cpu-s/GiB  p50   278.9 us  p95   417.7  p99   544.9
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache cold --mode uring --depth 1':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.391839750 seconds time elapsed
+
+       0.016144000 seconds user
+       0.468202000 seconds sys
+
+
+
+### cache=cold scheme=uring_qd8
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=cold repeat=1 warmup=0
+
+-- block=64 KiB --
+  uring_qd8      median    229.3  min    229.3  max    229.3 MiB/s  CPU  138.9%     6.20 cpu-s/GiB  p50     0.5 us  p95  1143.2  p99  1172.2
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache cold --mode uring --depth 8':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.368464500 seconds time elapsed
+
+       0.000000000 seconds user
+       0.465561000 seconds sys
+
+
+
+### cache=cold scheme=uring_qd64
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=cold repeat=1 warmup=0
+
+-- block=64 KiB --
+  uring_qd64     median    228.0  min    228.0  max    228.0 MiB/s  CPU  155.0%     6.96 cpu-s/GiB  p50     0.5 us  p95     0.5  p99 12816.9
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache cold --mode uring --depth 64':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.420902500 seconds time elapsed
+
+       0.019376000 seconds user
+       0.503787000 seconds sys
+
+
+
+### cache=hot scheme=sync
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=hot repeat=1 warmup=0
+
+预热 page cache ...
+-- block=64 KiB --
+  sync           median   1219.0  min   1219.0  max   1219.0 MiB/s  CPU  100.2%     0.84 cpu-s/GiB  p50    49.8 us  p95    58.8  p99    61.2
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache hot --mode sync':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.142209500 seconds time elapsed
+
+       0.000000000 seconds user
+       0.142099000 seconds sys
+
+
+
+### cache=hot scheme=uring_qd1
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=hot repeat=1 warmup=0
+
+预热 page cache ...
+-- block=64 KiB --
+  uring_qd1      median   1149.8  min   1149.8  max   1149.8 MiB/s  CPU  201.3%     1.79 cpu-s/GiB  p50    53.2 us  p95    56.2  p99    58.8
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache hot --mode uring --depth 1':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.130575000 seconds time elapsed
+
+       0.000000000 seconds user
+       0.186174000 seconds sys
+
+
+
+### cache=hot scheme=uring_qd8
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=hot repeat=1 warmup=0
+
+预热 page cache ...
+-- block=64 KiB --
+  uring_qd8      median   1062.4  min   1062.4  max   1062.4 MiB/s  CPU  186.5%     1.80 cpu-s/GiB  p50     0.5 us  p95   457.0  p99   480.9
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache hot --mode uring --depth 8':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.135625250 seconds time elapsed
+
+       0.009768000 seconds user
+       0.176425000 seconds sys
+
+
+
+### cache=hot scheme=uring_qd64
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=hot repeat=1 warmup=0
+
+预热 page cache ...
+-- block=64 KiB --
+  uring_qd64     median    814.3  min    814.3  max    814.3 MiB/s  CPU  206.0%     2.59 cpu-s/GiB  p50     0.5 us  p95     0.5  p99  4683.7
+
+
+ Performance counter stats for '/tmp/nas-bench/io_bench --file /media/sda1/nas_bench_64MiB.bin --block 64 --repeat 1 --cache hot --mode uring --depth 64':
+
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+   <not supported>      cache-references                                            
+   <not supported>      cache-misses                                                
+   <not supported> msec task-clock                                                  
+   <not supported>      context-switches                                            
+   <not supported>      cpu-migrations                                              
+   <not supported>      page-faults                                                 
+
+       0.159944000 seconds time elapsed
+
+       0.009805000 seconds user
+       0.225530000 seconds sys
+
+

@@ -164,6 +164,53 @@ curl -s http://127.0.0.1:8080/api/metrics         # Prometheus 指标
   --url 'http://127.0.0.1:8080/api/download?path=/srv/nas/big.bin' # HTTP 下载压测
 ```
 
+### 板端一键测试（RISC-V）
+
+在 Ubuntu 上编译并部署：
+
+```bash
+sh scripts/build-bench.sh --arch riscv64                    # nas-server + io_bench + http_bench
+sh scripts/board-bench.sh --board root@192.168.137.200 \
+    --data-dir /media/sda1                                  # 编译/部署/跑/拉回结果
+```
+
+板端测试二进制放在 `/tmp/nas-bench`，不会覆盖 `/usr/bin/nas-server`；
+退出时恢复测试前的 nas-web / Samba / watchdog 状态。
+结果默认落到 `NAS_Test/data/run-<timestamp>/`。脚本会：
+
+- 校验 `--data-dir` 是真实挂载点（拒绝 tmpfs/rootfs）；
+- 扫块大小 × QD × 冷/热，输出 CPU、CPU-s/GiB、上下文切换、缺页、p50/p95/p99；
+- 校验 sync / io_uring 读取内容哈希一致；
+- 有 `perf` 时采代表性组合的 `perf stat`，并录 sync/uring 火焰图；
+- 跑 HTTP sync/uring 对照，分别记录客户端/服务端 CPU、吞吐、延迟和哈希；
+- 退出时恢复测试前的 nas-web / Samba / watchdog 状态。
+
+板端也可以直接跑：
+
+```bash
+/tmp/nas-bench/run-board-tests.sh \
+    --data-dir /media/sda1 \
+    --out /mnt/data/nas-bench-$(date +%Y%m%d-%H%M%S)
+```
+
+常用裁剪：`--skip-http`、`--skip-flame`、`--skip-perf`、`--repeat 3`、
+`--blocks 4,64,256`、`--depths 1,8,64`。火焰图数据在 `flame-*.data` /
+`flame-*.perf`；Ubuntu 上设置 `FLAMEGRAPH_DIR=~/FlameGraph` 后，
+`board-bench.sh` 会自动生成 SVG。
+
+厂商内核没编 `CONFIG_PERF_EVENTS` 时 `perf record` 会直接失败
+（`perf_event_open` 返回 ENOSYS），脚本会自动回退到 gdb 采样：板端只产出
+原始 `flame-*.gdb`，拉回 Ubuntu 后由 `scripts/flame-gdb.sh fold` 折叠成
+`flame-*.folded`，再配合 `FLAMEGRAPH_DIR` 生成 SVG。gdb 采样会短暂暂停进程、
+只能看到用户态调用栈，热点排序可用，但绝对性能数字不要拿来对比；板端镜像需要
+包含 `gdb`（Buildroot `BR2_PACKAGE_GDB=y`）和与 glibc 匹配的 `libthread_db`，
+否则只能采到主线程。
+
+> 注意：JH7110 厂商 5.15 内核如果没有 SBI PMU，`env.txt` 里会是
+> `have_hw=0`，`perf stat` 只有 task-clock/context-switches/page-faults
+> 等软件事件；cycles/instructions/IPC 需要带 PMU 的主线内核，或另做
+> `rdcycle/rdinstret` 微基准。脚本不会把软件事件冒充硬件计数器。
+
 ### 只测某个模块（不起服务）
 
 单元测试直接构造对应类即可，例如平台无关部分用 `FakeSystemState` 注入：
@@ -208,6 +255,7 @@ auto st = monitor.report();
 | `log.file` / `log.level` | `nas-server.log` / `INFO` | 日志与级别 |
 | `web.dir` | 空 | 含 `index.html` 时覆盖内嵌 UI |
 | `io.uring` / `io.blockKb` / `io.depth` / `io.thresholdKb` | `false`/`128`/`8`/`4096` | io_uring 下载 |
+| `io.handoff` | `yield` | 异步交接：`yield`（忙等基线）/`condvar`（条件变量） |
 | `monitor.pollMs` | `1000` | 重读 `/proc/mounts` 周期 |
 
 完整契约见 [`docs/image-integration.md`](docs/image-integration.md)。
@@ -270,7 +318,8 @@ NAS-Web-Cpp/
 ├── bench/                       # io_bench / http_bench
 ├── deploy/                      # nas.conf.example / S92nasweb
 ├── web/index.html               # 网页 UI（CMake 生成内嵌资源）
-├── scripts/                     # build.sh（交叉编译）/ test.sh（本机测试）
+├── scripts/                     # build.sh / build-bench.sh / test.sh /
+│                                # run-board-tests.sh / board-bench.sh
 └── tests/                       # 13 个用例（多库 + TSan）
 ```
 

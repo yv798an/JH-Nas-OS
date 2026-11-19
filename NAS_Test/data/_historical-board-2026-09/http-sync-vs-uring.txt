@@ -1,0 +1,14 @@
+==== io.uring=false ====
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/big.bin&download=1
+threads=1 rounds=5
+bytes=1342177280  time=3.369 s  throughput=379.9 MiB/s  errors=0
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/big.bin&download=1
+threads=8 rounds=5
+bytes=10737418240  time=15.779 s  throughput=648.9 MiB/s  errors=0
+==== io.uring=true ====
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/big.bin&download=1
+threads=1 rounds=5
+bytes=1342177280  time=3.751 s  throughput=341.2 MiB/s  errors=0
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/big.bin&download=1
+threads=8 rounds=5
+bytes=10737418240  time=22.599 s  throughput=453.1 MiB/s  errors=0

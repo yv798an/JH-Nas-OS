@@ -110,6 +110,28 @@ int main() {
         CHECK(sink.data == "hello world");
     }
 
+    // [3b] io_uring 分支：阈值强制命中；ring 不可用时应回退同步读。
+    {
+        std::printf("[3b] io_uring fallback\n");
+        nas::DownloadIoOptions io;
+        io.useUring       = true;
+        io.blockSize      = 4096;
+        io.depth          = 2;
+        io.thresholdBytes = 1;  // 让 11 字节的测试文件也走 uring 分支
+
+        nas::Router uringRouter;
+        nas::registerFileRoutes(uringRouter, files, io);
+
+        auto r = req("GET", "/api/download");
+        r.params["path"] = fileStr;
+        const auto res = uringRouter.dispatch(r);
+        CHECK(res.status == 200);
+        CHECK(static_cast<bool>(res.provider));
+        FakeSink sink;
+        CHECK(res.provider(0, static_cast<std::size_t>(res.contentLength), sink));
+        CHECK(sink.data == "hello world");
+    }
+
     // [4] 下载（Range: bytes=6-10 -> "world"）
     {
         std::printf("[4] Range\n");

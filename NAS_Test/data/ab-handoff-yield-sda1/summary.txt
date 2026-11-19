@@ -1,0 +1,60 @@
+NAS bench summary
+out=/tmp/nas-bench-out-20261025-124939
+data_dir=/media/sda1 fstype=ext4 file=/media/sda1/nas_bench_128MiB.bin
+size_mib=128 repeat=3
+blocks=64 depths=1,4,8,16,32,64
+http_threads=1,2,4,8 http_rounds=3
+io_handoff=yield
+have_perf=1 have_hw=1 have_gdb=0
+io_hash=d9cbadf124222325
+
+total 208
+-rw-------    1 root     root          2988 Jan  1 00:14 env.txt
+-rw-------    1 root     root           193 Jan  1 00:15 http-server-cpu.txt
+-rw-------    1 root     root           367 Jan  1 00:15 http-sync-t1.csv
+-rw-------    1 root     root           363 Jan  1 00:15 http-sync-t1.txt
+-rw-------    1 root     root           368 Jan  1 00:15 http-sync-t2.csv
+-rw-------    1 root     root           364 Jan  1 00:15 http-sync-t2.txt
+-rw-------    1 root     root           376 Jan  1 00:15 http-sync-t4.csv
+-rw-------    1 root     root           370 Jan  1 00:15 http-sync-t4.txt
+-rw-------    1 root     root           378 Jan  1 00:15 http-sync-t8.csv
+-rw-------    1 root     root           371 Jan  1 00:15 http-sync-t8.txt
+-rw-------    1 root     root           370 Jan  1 00:15 http-sync-verify.csv
+-rw-------    1 root     root           367 Jan  1 00:15 http-sync-verify.txt
+-rw-------    1 root     root           365 Jan  1 00:15 http-sync-warm.txt
+-rw-------    1 root     root           367 Jan  1 00:15 http-uring-t1.csv
+-rw-------    1 root     root           364 Jan  1 00:15 http-uring-t1.txt
+-rw-------    1 root     root           373 Jan  1 00:15 http-uring-t2.csv
+-rw-------    1 root     root           367 Jan  1 00:15 http-uring-t2.txt
+-rw-------    1 root     root           377 Jan  1 00:15 http-uring-t4.csv
+-rw-------    1 root     root           371 Jan  1 00:15 http-uring-t4.txt
+-rw-------    1 root     root           380 Jan  1 00:15 http-uring-t8.csv
+-rw-------    1 root     root           373 Jan  1 00:15 http-uring-t8.txt
+-rw-------    1 root     root           371 Jan  1 00:15 http-uring-verify.csv
+-rw-------    1 root     root           368 Jan  1 00:15 http-uring-verify.txt
+-rw-------    1 root     root           366 Jan  1 00:15 http-uring-warm.txt
+-rw-------    1 root     root          4364 Jan  1 00:15 io-cold.csv
+-rw-------    1 root     root          1107 Jan  1 00:15 io-cold.txt
+-rw-------    1 root     root          4243 Jan  1 00:15 io-hot.csv
+-rw-------    1 root     root          1128 Jan  1 00:15 io-hot.txt
+-rw-------    1 root     root          1228 Jan  1 00:14 nas-sync.conf
+-rw-------    1 root     root          1227 Jan  1 00:14 nas-uring.conf
+-rw-------    1 root     root           372 Jan  1 00:15 proc-sync-t1.after.csv
+-rw-------    1 root     root           369 Jan  1 00:15 proc-sync-t1.before.csv
+-rw-------    1 root     root           378 Jan  1 00:15 proc-sync-t2.after.csv
+-rw-------    1 root     root           372 Jan  1 00:15 proc-sync-t2.before.csv
+-rw-------    1 root     root           395 Jan  1 00:15 proc-sync-t4.after.csv
+-rw-------    1 root     root           378 Jan  1 00:15 proc-sync-t4.before.csv
+-rw-------    1 root     root           405 Jan  1 00:15 proc-sync-t8.after.csv
+-rw-------    1 root     root           395 Jan  1 00:15 proc-sync-t8.before.csv
+-rw-------    1 root     root           383 Jan  1 00:15 proc-uring-t1.after.csv
+-rw-------    1 root     root           380 Jan  1 00:15 proc-uring-t1.before.csv
+-rw-------    1 root     root           391 Jan  1 00:15 proc-uring-t2.after.csv
+-rw-------    1 root     root           383 Jan  1 00:15 proc-uring-t2.before.csv
+-rw-------    1 root     root           411 Jan  1 00:15 proc-uring-t4.after.csv
+-rw-------    1 root     root           392 Jan  1 00:15 proc-uring-t4.before.csv
+-rw-------    1 root     root           437 Jan  1 00:15 proc-uring-t8.after.csv
+-rw-------    1 root     root           411 Jan  1 00:15 proc-uring-t8.before.csv
+-rw-------    1 root     root          7498 Jan  1 00:15 run.log
+-rw-------    1 root     root           293 Jan  1 00:15 summary.txt
+-rw-------    1 root     root           352 Jan  1 00:15 verify-io.txt

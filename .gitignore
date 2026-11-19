@@ -22,10 +22,22 @@ http_bench
 
 # Logs
 *.log
+!NAS_Test/**/*.log
+!data/**/*.log
 
 # Local test data / benchmark results
-NAS_Test/
+# Raw runs and figures are tracked; manuscripts/previews are kept local because
+# they contain author PII (email/ORCID/affiliation).
+NAS_Test/esl/
+NAS_Test/micpro/
+NAS_Test/paper-draft.*
+NAS_Test/*.docx
+NAS_Test/*.pdf
 NAS_Test_board/
+
+# Python cache
+__pycache__/
+*.pyc
 
 # Editor / OS
 .vscode/

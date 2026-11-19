@@ -1,0 +1,2 @@
+bench,label,threads,rounds,warmup,requests,bytes,wall_s,throughput_mib_s,user_s,sys_s,cpu_s,cpu_pct,cpu_s_per_gib,maxrss_kib,minflt,majflt,nvcsw,nivcsw,p50_ms,p95_ms,p99_ms,hash,hash_mismatch,errors
+http,sync-verify,1,1,0,1,134217728,0.820604,155.982571,0.487260,0.323203,0.810463,98.764143,6.483704,1820,130,0,3,13,820.097750,820.097750,820.097750,d9cbadf124222325,0,0

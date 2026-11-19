@@ -1,0 +1,2 @@
+bench,label,threads,rounds,warmup,requests,bytes,wall_s,throughput_mib_s,user_s,sys_s,cpu_s,cpu_pct,cpu_s_per_gib,maxrss_kib,minflt,majflt,nvcsw,nivcsw,p50_ms,p95_ms,p99_ms,hash,hash_mismatch,errors
+http,uring-t4,4,3,0,12,1610612736,4.377474,350.887272,5.840682,4.939722,10.780404,246.269958,7.186936,1936,198,0,58,15777,1405.061000,1560.361650,1593.551730,d9cbadf124222325,0,0

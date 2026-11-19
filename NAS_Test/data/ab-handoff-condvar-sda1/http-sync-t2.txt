@@ -1,0 +1,5 @@
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/nas_bench_128MiB.bin&download=1
+label=sync-t2 threads=2 rounds=3 warmup=0
+requests=6 bytes=805306368 time=2.481 s throughput=309.6 MiB/s errors=0
+cpu=4.887 s (user=3.029 sys=1.858) cpu_pct=197.0% cpu_s_per_gib=6.516 p50=819.524 ms p95=837.055 ms p99=840.197 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0

@@ -1,0 +1,49 @@
+NAS bench summary
+out=/mnt/data/nas-bench-sdb1-full
+data_dir=/media/sdb1 fstype=ext4 file=/media/sdb1/nas_bench_256MiB.bin
+size_mib=256 repeat=5
+blocks=4,8,16,32,64,128,256,512,1024 depths=1,4,8,16,32,64
+http_threads=1,2,4,8 http_rounds=3
+have_perf=1 have_hw=1
+io_hash=7ba4befdc4222325
+
+total 140
+-rw-------    1 root     root          3007 Jan  1 01:22 env.txt
+-rw-------    1 root     root             0 Jan  1 01:27 flame-load-sync.txt
+-rw-------    1 root     root             0 Jan  1 01:27 flame-load-uring.txt
+-rw-------    1 root     root             0 Jan  1 01:27 flame-sync.data
+-rw-------    1 root     root           355 Jan  1 01:27 flame-sync.record.txt
+-rw-------    1 root     root             0 Jan  1 01:27 flame-uring.data
+-rw-------    1 root     root           355 Jan  1 01:27 flame-uring.record.txt
+-rw-------    1 root     root           196 Jan  1 01:29 http-server-cpu.txt
+-rw-------    1 root     root           370 Jan  1 01:27 http-sync-t1.csv
+-rw-------    1 root     root           366 Jan  1 01:27 http-sync-t1.txt
+-rw-------    1 root     root           373 Jan  1 01:28 http-sync-t2.csv
+-rw-------    1 root     root           368 Jan  1 01:28 http-sync-t2.txt
+-rw-------    1 root     root           377 Jan  1 01:28 http-sync-t4.csv
+-rw-------    1 root     root           371 Jan  1 01:28 http-sync-t4.txt
+-rw-------    1 root     root           381 Jan  1 01:28 http-sync-t8.csv
+-rw-------    1 root     root           373 Jan  1 01:28 http-sync-t8.txt
+-rw-------    1 root     root           373 Jan  1 01:28 http-sync-verify.csv
+-rw-------    1 root     root           370 Jan  1 01:28 http-sync-verify.txt
+-rw-------    1 root     root           368 Jan  1 01:27 http-sync-warm.txt
+-rw-------    1 root     root           371 Jan  1 01:28 http-uring-t1.csv
+-rw-------    1 root     root           367 Jan  1 01:28 http-uring-t1.txt
+-rw-------    1 root     root           376 Jan  1 01:28 http-uring-t2.csv
+-rw-------    1 root     root           370 Jan  1 01:28 http-uring-t2.txt
+-rw-------    1 root     root           379 Jan  1 01:28 http-uring-t4.csv
+-rw-------    1 root     root           373 Jan  1 01:28 http-uring-t4.txt
+-rw-------    1 root     root           381 Jan  1 01:29 http-uring-t8.csv
+-rw-------    1 root     root           374 Jan  1 01:29 http-uring-t8.txt
+-rw-------    1 root     root           374 Jan  1 01:29 http-uring-verify.csv
+-rw-------    1 root     root           371 Jan  1 01:29 http-uring-verify.txt
+-rw-------    1 root     root           369 Jan  1 01:28 http-uring-warm.txt
+-rw-------    1 root     root             0 Jan  1 01:22 io-cold.csv
+-rw-------    1 root     root             0 Jan  1 01:22 io-cold.txt
+-rw-------    1 root     root             0 Jan  1 01:26 io-hot.txt
+-rw-------    1 root     root          1209 Jan  1 01:22 nas-sync.conf
+-rw-------    1 root     root          1208 Jan  1 01:22 nas-uring.conf
+-rw-------    1 root     root         11461 Jan  1 01:27 perf-stat.txt
+-rw-------    1 root     root          5719 Jan  1 01:29 run.log
+-rw-------    1 root     root           287 Jan  1 01:29 summary.txt
+-rw-------    1 root     root           352 Jan  1 01:26 verify-io.txt

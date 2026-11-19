@@ -1,0 +1,14 @@
+# pid=2046 hz=100 voluntary=14 nonvoluntary=9
+tid,comm,utime_ticks,stime_ticks,vcsw,nivcsw
+2046,nas-server,1,0,14,9
+2049,nas-server,0,0,17,0
+2050,nas-server,0,0,79,0
+2051,nas-server,0,0,16,0
+2052,nas-http,6,64,1603,961
+2053,nas-http,0,24,377,4
+2054,nas-http,2,67,1142,27
+2055,nas-http,1,73,1851,5
+2056,nas-http,9,76,1135,30
+2057,nas-http,1,74,1536,3451
+2058,nas-http,3,72,1455,6141
+2059,nas-http,0,91,1015,1995

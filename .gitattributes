@@ -1,0 +1,23 @@
+# Linux 目标机的 shell 脚本必须使用 LF；Windows 上 core.autocrlf=true
+# 默认会在 checkout 时转成 CRLF，导致 BusyBox sh 报 "not found"。
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+*.log text eol=lf
+*.conf text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.hpp text eol=lf
+deploy/S92nasweb text eol=lf
+deploy/nas-web-check.sh text eol=lf
+my_overlay/etc/init.d/* text eol=lf
+my_overlay/sbin/* text eol=lf
+my_overlay/usr/bin/* text eol=lf

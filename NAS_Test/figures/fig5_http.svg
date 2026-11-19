@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="460" viewBox="0 0 1100 460">
+<rect width="1100" height="460" fill="#ffffff"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 z" fill="#444"/></marker></defs>
+<line x1="95.00" y1="336.94" x2="540.00" y2="336.94" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="296.61" x2="540.00" y2="296.61" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="256.29" x2="540.00" y2="256.29" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="215.97" x2="540.00" y2="215.97" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="175.65" x2="540.00" y2="175.65" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="135.32" x2="540.00" y2="135.32" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="95.00" x2="540.00" y2="95.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="95.00" x2="95.00" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="158.57" y1="95.00" x2="158.57" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="285.71" y1="95.00" x2="285.71" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="540.00" y1="95.00" x2="540.00" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="95.00" y1="345.00" x2="540.00" y2="345.00" stroke="#333" stroke-width="1.5"/>
+<line x1="95.00" y1="95.00" x2="95.00" y2="345.00" stroke="#333" stroke-width="1.5"/>
+<line x1="95.00" y1="345.00" x2="95.00" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="95.00" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">1</text>
+<line x1="158.57" y1="345.00" x2="158.57" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="158.57" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">2</text>
+<line x1="285.71" y1="345.00" x2="285.71" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="285.71" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">4</text>
+<line x1="540.00" y1="345.00" x2="540.00" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="540.00" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">8</text>
+<line x1="90.00" y1="336.94" x2="95.00" y2="336.94" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="340.94" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">150</text>
+<line x1="90.00" y1="296.61" x2="95.00" y2="296.61" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="300.61" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">200</text>
+<line x1="90.00" y1="256.29" x2="95.00" y2="256.29" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="260.29" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">250</text>
+<line x1="90.00" y1="215.97" x2="95.00" y2="215.97" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="219.97" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">300</text>
+<line x1="90.00" y1="175.65" x2="95.00" y2="175.65" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="179.65" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">350</text>
+<line x1="90.00" y1="135.32" x2="95.00" y2="135.32" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="139.32" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">400</text>
+<line x1="90.00" y1="95.00" x2="95.00" y2="95.00" stroke="#333" stroke-width="1.2"/>
+<text x="86.00" y="99.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">450</text>
+<text x="317.50" y="389.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle">Client threads</text>
+<text x="37.00" y="220.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle" transform="rotate(-90 37.00 220.00)">Throughput (MiB/s)</text>
+<text x="317.50" y="79.00" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222" font-weight="bold" text-anchor="middle">HTTP throughput</text>
+<polyline points="95.00,329.46 158.57,205.40 285.71,122.86 540.00,124.75" fill="none" stroke="#1f77b4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="95.00" cy="329.46" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="158.57" cy="205.40" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="285.71" cy="122.86" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="540.00" cy="124.75" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<polyline points="95.00,333.94 158.57,223.25 285.71,246.11 540.00,245.21" fill="none" stroke="#d62728" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="95.00" cy="333.94" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="158.57" cy="223.25" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="285.71" cy="246.11" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="540.00" cy="245.21" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<polyline points="95.00,328.57 158.57,206.90 285.71,149.65 540.00,123.83" fill="none" stroke="#2ca02c" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="90.80" y="324.37" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="154.37" y="202.70" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="281.51" y="145.45" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="535.80" y="119.63" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<polyline points="95.00,333.49 158.57,261.41 285.71,245.12 540.00,249.02" fill="none" stroke="#e07b00" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="90.80" y="329.29" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="154.37" y="257.21" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="281.51" y="240.92" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="535.80" y="244.82" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<line x1="650.00" y1="345.00" x2="1095.00" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="289.44" x2="1095.00" y2="289.44" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="233.89" x2="1095.00" y2="233.89" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="178.33" x2="1095.00" y2="178.33" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="122.78" x2="1095.00" y2="122.78" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="95.00" x2="650.00" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="713.57" y1="95.00" x2="713.57" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="840.71" y1="95.00" x2="840.71" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="1095.00" y1="95.00" x2="1095.00" y2="345.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="650.00" y1="345.00" x2="1095.00" y2="345.00" stroke="#333" stroke-width="1.5"/>
+<line x1="650.00" y1="95.00" x2="650.00" y2="345.00" stroke="#333" stroke-width="1.5"/>
+<line x1="650.00" y1="345.00" x2="650.00" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="650.00" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">1</text>
+<line x1="713.57" y1="345.00" x2="713.57" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="713.57" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">2</text>
+<line x1="840.71" y1="345.00" x2="840.71" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="840.71" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">4</text>
+<line x1="1095.00" y1="345.00" x2="1095.00" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="1095.00" y="365.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">8</text>
+<line x1="645.00" y1="345.00" x2="650.00" y2="345.00" stroke="#333" stroke-width="1.2"/>
+<text x="641.00" y="349.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">0</text>
+<line x1="645.00" y1="289.44" x2="650.00" y2="289.44" stroke="#333" stroke-width="1.2"/>
+<text x="641.00" y="293.44" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">30</text>
+<line x1="645.00" y1="233.89" x2="650.00" y2="233.89" stroke="#333" stroke-width="1.2"/>
+<text x="641.00" y="237.89" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">60</text>
+<line x1="645.00" y1="178.33" x2="650.00" y2="178.33" stroke="#333" stroke-width="1.2"/>
+<text x="641.00" y="182.33" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">90</text>
+<line x1="645.00" y1="122.78" x2="650.00" y2="122.78" stroke="#333" stroke-width="1.2"/>
+<text x="641.00" y="126.78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">120</text>
+<text x="872.50" y="389.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle">Client threads</text>
+<text x="592.00" y="220.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle" transform="rotate(-90 592.00 220.00)">Server CPU (%)</text>
+<text x="872.50" y="79.00" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222" font-weight="bold" text-anchor="middle">Server CPU</text>
+<polyline points="650.00,279.96 713.57,192.80 840.71,130.28 1095.00,122.72" fill="none" stroke="#1f77b4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="650.00" cy="279.96" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="713.57" cy="192.80" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="840.71" cy="130.28" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="1095.00" cy="122.72" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<polyline points="650.00,295.57 713.57,234.59 840.71,242.61 1095.00,246.13" fill="none" stroke="#d62728" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="650.00" cy="295.57" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="713.57" cy="234.59" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="840.71" cy="242.61" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<circle cx="1095.00" cy="246.13" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<polyline points="650.00,275.80 713.57,189.74 840.71,147.15 1095.00,122.87" fill="none" stroke="#2ca02c" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="645.80" y="271.60" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="709.37" y="185.54" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="836.51" y="142.95" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<rect x="1090.80" y="118.67" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<polyline points="650.00,296.76 713.57,259.30 840.71,248.76 1095.00,251.43" fill="none" stroke="#e07b00" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="645.80" y="292.56" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="709.37" y="255.10" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="836.51" y="244.56" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="1090.80" y="247.23" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<circle cx="283.00" cy="416.00" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<line x1="270.00" y1="416.00" x2="296.00" y2="416.00" stroke="#1f77b4" stroke-width="2.0"/>
+<text x="303.00" y="420.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sda1 USB 3.0 sync</text>
+<circle cx="563.00" cy="416.00" r="4.2" fill="#d62728" stroke="none" stroke-width="1.5"/>
+<line x1="550.00" y1="416.00" x2="576.00" y2="416.00" stroke="#d62728" stroke-width="2.0"/>
+<text x="583.00" y="420.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sda1 USB 3.0 uring</text>
+<rect x="278.80" y="433.80" width="8.4" height="8.4" fill="#2ca02c" stroke="none" stroke-width="1.5"/>
+<line x1="270.00" y1="438.00" x2="296.00" y2="438.00" stroke="#2ca02c" stroke-width="2.0"/>
+<text x="303.00" y="442.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sdb1 USB 2.0 sync</text>
+<rect x="558.80" y="433.80" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<line x1="550.00" y1="438.00" x2="576.00" y2="438.00" stroke="#e07b00" stroke-width="2.0"/>
+<text x="583.00" y="442.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sdb1 USB 2.0 uring</text>
+</svg>

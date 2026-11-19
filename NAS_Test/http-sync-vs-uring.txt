@@ -1,0 +1,14 @@
+==== io.uring=false ====
+url=http://127.0.0.1:8080/api/download?path=/srv/nas/big.bin&download=1
+threads=1 rounds=5
+bytes=5368709120  time=4.968 s  throughput=1030.5 MiB/s  errors=0
+url=http://127.0.0.1:8080/api/download?path=/srv/nas/big.bin&download=1
+threads=8 rounds=5
+bytes=42949672960  time=26.816 s  throughput=1527.4 MiB/s  errors=0
+==== io.uring=true ====
+url=http://127.0.0.1:8080/api/download?path=/srv/nas/big.bin&download=1
+threads=1 rounds=5
+bytes=5368709120  time=5.356 s  throughput=956.0 MiB/s  errors=0
+url=http://127.0.0.1:8080/api/download?path=/srv/nas/big.bin&download=1
+threads=8 rounds=5
+bytes=42949672960  time=47.886 s  throughput=855.4 MiB/s  errors=0

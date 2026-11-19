@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<rect width="1000" height="500" fill="#ffffff"/>
+<text x="500.00" y="28.00" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#222" font-weight="bold" text-anchor="middle">Board-side time decomposition (64 KiB, QD=8)</text>
+<line x1="90.00" y1="400.00" x2="450.00" y2="400.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="80.00" y="404.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">0%</text>
+<line x1="90.00" y1="320.00" x2="450.00" y2="320.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="80.00" y="324.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">25%</text>
+<line x1="90.00" y1="240.00" x2="450.00" y2="240.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="80.00" y="244.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">50%</text>
+<line x1="90.00" y1="160.00" x2="450.00" y2="160.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="80.00" y="164.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">75%</text>
+<line x1="90.00" y1="80.00" x2="450.00" y2="80.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="80.00" y="84.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">100%</text>
+<line x1="90.00" y1="400.00" x2="450.00" y2="400.00" stroke="#333" stroke-width="1.0"/>
+<line x1="90.00" y1="80.00" x2="90.00" y2="400.00" stroke="#333" stroke-width="1.0"/>
+<rect x="120.00" y="82.97" width="40.00" height="317.03" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="120.00" y="80.00" width="40.00" height="2.97" fill="#9e9e9e" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="174.00" y="396.22" width="40.00" height="3.78" fill="#e07b00" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="174.00" y="81.82" width="40.00" height="314.39" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="174.00" y="80.00" width="40.00" height="1.82" fill="#2ca02c" stroke="#ffffff" stroke-width="0.8"/>
+<text x="167.00" y="434.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">cold
+sda1</text>
+<text x="140.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">R</text>
+<text x="194.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7b4fa0" font-weight="normal" text-anchor="middle">C</text>
+<rect x="212.00" y="88.60" width="40.00" height="311.40" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="212.00" y="80.00" width="40.00" height="8.60" fill="#9e9e9e" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="266.00" y="375.49" width="40.00" height="24.51" fill="#e07b00" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="266.00" y="86.97" width="40.00" height="288.52" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="266.00" y="80.00" width="40.00" height="6.97" fill="#2ca02c" stroke="#ffffff" stroke-width="0.8"/>
+<text x="259.00" y="434.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">hot
+sda1</text>
+<text x="232.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">R</text>
+<text x="286.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7b4fa0" font-weight="normal" text-anchor="middle">C</text>
+<rect x="304.00" y="80.30" width="40.00" height="319.70" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="304.00" y="80.00" width="40.00" height="0.30" fill="#9e9e9e" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="358.00" y="399.53" width="40.00" height="0.47" fill="#e07b00" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="358.00" y="80.14" width="40.00" height="319.39" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="358.00" y="80.00" width="40.00" height="0.14" fill="#2ca02c" stroke="#ffffff" stroke-width="0.8"/>
+<text x="351.00" y="434.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">cold
+sdb1</text>
+<text x="324.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">R</text>
+<text x="378.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7b4fa0" font-weight="normal" text-anchor="middle">C</text>
+<rect x="396.00" y="88.60" width="40.00" height="311.40" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="396.00" y="80.00" width="40.00" height="8.60" fill="#9e9e9e" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.00" y="375.08" width="40.00" height="24.92" fill="#e07b00" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.00" y="87.00" width="40.00" height="288.08" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.00" y="80.00" width="40.00" height="7.00" fill="#2ca02c" stroke="#ffffff" stroke-width="0.8"/>
+<text x="443.00" y="434.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">hot
+sdb1</text>
+<text x="416.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">R</text>
+<text x="470.00" y="416.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7b4fa0" font-weight="normal" text-anchor="middle">C</text>
+<rect x="120.00" y="445.00" width="12.00" height="12.00" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="138.00" y="456.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">submit/I-O</text>
+<rect x="265.00" y="445.00" width="12.00" height="12.00" fill="#e07b00" stroke="#ffffff" stroke-width="0.8"/>
+<text x="283.00" y="456.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">queue</text>
+<rect x="410.00" y="445.00" width="12.00" height="12.00" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="428.00" y="456.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">handoff wait</text>
+<rect x="555.00" y="445.00" width="12.00" height="12.00" fill="#2ca02c" stroke="#ffffff" stroke-width="0.8"/>
+<text x="573.00" y="456.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">processing</text>
+<rect x="700.00" y="445.00" width="12.00" height="12.00" fill="#9e9e9e" stroke="#ffffff" stroke-width="0.8"/>
+<text x="718.00" y="456.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">other</text>
+<text x="500.00" y="490.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666" font-weight="normal" text-anchor="middle">R = reader thread, C = consumer thread; bars are percentages of run wall time</text>
+</svg>

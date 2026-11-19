@@ -1,0 +1,9 @@
+mode,threads,wall_s,server_cpu_pct
+sync,1,3.050,28.52
+sync,2,3.160,62.03
+sync,4,4.680,90.60
+sync,8,8.070,109.17
+uring,1,3.210,21.50
+uring,2,3.890,40.87
+uring,4,6.510,47.77
+uring,8,12.180,49.67

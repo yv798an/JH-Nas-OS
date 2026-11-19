@@ -1,0 +1,5 @@
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/nas_bench_128MiB.bin&download=1
+label=uring-t8 threads=8 rounds=3 warmup=0
+requests=24 bytes=3221225472 time=11.507 s throughput=267.0 MiB/s errors=0
+cpu=20.695 s (user=11.741 sys=8.954) cpu_pct=179.8% cpu_s_per_gib=6.898 p50=3769.928 ms p95=3981.655 ms p99=4064.066 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0

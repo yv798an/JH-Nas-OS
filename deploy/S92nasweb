@@ -1,28 +1,66 @@
 #!/bin/sh
 #
-# nas-server 启动脚本（BusyBox init / Buildroot）
-# 放置位置：镜像内 /etc/init.d/S92nasweb（由 overlay 注入，需 chmod +x）
+# nas-server 启动脚本（BusyBox init / Buildroot）。
+# 放置位置：镜像内 /etc/init.d/S92nasweb（需 chmod +x）。
 #
-# 进程模型：程序前台运行，由本脚本用 start-stop-daemon 后台化并写 pidfile。
-# 停止时发送 SIGTERM，程序捕获后优雅退出。
+# 进程模型：程序前台运行，由本脚本用 start-stop-daemon 后台化并持有 pidfile。
+# 停止时发 SIGTERM，程序捕获后优雅退出。
 #
-DAEMON="/usr/bin/nas-server"
-CONF="/etc/nas/nas.conf"
+# 可用环境变量覆盖（便于 benchmark 切换配置）：
+#   NAS_BIN=/usr/bin/nas-server
+#   NAS_CONF=/etc/nas/nas.conf
+#
+DAEMON="${NAS_BIN:-/usr/bin/nas-server}"
+CONF="${NAS_CONF:-/etc/nas/nas.conf}"
 PIDFILE="/run/nas/nasweb.pid"
+HEALTHFILE="/run/nas/nasweb.healthy"
 
 start() {
 	printf "Starting nas-web: "
-	mkdir -p /run/nas
+	mkdir -p /run/nas /var/log
 
+	if [ ! -x "$DAEMON" ]; then
+		rm -f "$HEALTHFILE"
+		echo "FAILED (missing or not executable: $DAEMON)"
+		return 1
+	fi
+	if [ ! -f "$CONF" ]; then
+		rm -f "$HEALTHFILE"
+		echo "FAILED (missing config: $CONF)"
+		return 1
+	fi
 	if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
 		echo "already running"
 		return 0
 	fi
 
+	# 本次启动前撤销旧的健康标记；只有探活成功才重新写入。
+	# S95watchdog 见到标记才启动，避免首次部署/配置错误时复位循环。
+	rm -f "$HEALTHFILE"
+
 	start-stop-daemon --start --quiet --background --make-pidfile \
 		--pidfile "$PIDFILE" --exec "$DAEMON" -- \
 		--serve --config "$CONF"
-	echo "OK"
+
+	# 等 service 真正可探活后再返回，避免 S95watchdog 先启动误判。
+	# 单次探活最长 3s，这里最多等 5 轮。
+	i=0
+	while [ "$i" -lt 5 ]; do
+		if "$DAEMON" --health-check --config "$CONF" >/dev/null 2>&1; then
+			: > "$HEALTHFILE"
+			echo "OK"
+			return 0
+		fi
+		i=$((i + 1))
+		sleep 1
+	done
+
+	rm -f "$HEALTHFILE"
+	echo "FAILED (health-check)"
+	start-stop-daemon --stop --quiet --pidfile "$PIDFILE" \
+		--retry TERM/5/KILL/1 2>/dev/null
+	rm -f "$PIDFILE"
+	return 1
 }
 
 stop() {
@@ -34,6 +72,7 @@ stop() {
 	else
 		start-stop-daemon --stop --quiet --exec "$DAEMON" 2>/dev/null
 	fi
+	rm -f "$HEALTHFILE"
 	echo "OK"
 }
 

@@ -10,6 +10,10 @@
 #include <utility>
 #include <vector>
 
+#if defined(__linux__)
+#include <sys/prctl.h>
+#endif
+
 #if defined(NAS_HAS_IO_URING)
 #include "io/AsyncFileReader.h"
 #include "io/BufferPool.h"
@@ -179,6 +183,9 @@ std::string entryToJson(const FileEntry& e) {
 void handleDownload(const FileService& files, const HttpRequest& req,
                     HttpResponse& res, const DownloadIoOptions& io) {
     (void)io;  // 未启用 io_uring 时该参数不参与编译
+#if defined(__linux__)
+    ::prctl(PR_SET_NAME, "nas-http", 0, 0, 0);
+#endif
     const std::string path = param(req, "path");
     if (path.empty()) {
         res = errorResponse(FileError::Invalid, "缺少 path");
@@ -220,17 +227,45 @@ void handleDownload(const FileService& files, const HttpRequest& req,
     const std::uint64_t sliceLen = size > 0 ? (end - start + 1) : 0;
     res.contentLength = sliceLen;
 
+    const BodyProvider syncProvider =
+        [canonical = entry.path, start](std::size_t offset, std::size_t length,
+                                        BodySink& sink) -> bool {
+            std::ifstream f(canonical, std::ios::binary);
+            if (!f) return false;
+            f.seekg(static_cast<std::streamoff>(start + offset));
+
+            constexpr std::size_t kChunk = 64 * 1024;
+            std::vector<char> buf(std::min(length, kChunk));
+            std::size_t remaining = length;
+            while (remaining > 0) {
+                const std::size_t want = std::min(remaining, buf.size());
+                f.read(buf.data(), static_cast<std::streamsize>(want));
+                const std::size_t n = static_cast<std::size_t>(f.gcount());
+                if (n != want) return false;  // 必须写满，避免错位损坏
+                if (!sink.write(buf.data(), n)) return false;
+                remaining -= n;
+            }
+            return true;
+        };
+
 #if defined(NAS_HAS_IO_URING)
     // io_uring 流水线：启用且文件够大时使用；否则回退同步读。
     if (io.useUring && sliceLen >= io.thresholdBytes) {
         res.provider = [path = entry.path, start, sliceLen,
-                        blockSize = io.blockSize, depth = io.depth](
-                           std::size_t offset, std::size_t /*length*/,
-                           BodySink& sink) -> bool {
-            if (offset != 0) return false;  // 一次性写完整段
-            AsyncFileReader reader(blockSize, depth);
+                        blockSize = io.blockSize, depth = io.depth,
+                        useCondvar = io.useCondvar,
+                        syncProvider](std::size_t offset, std::size_t length,
+                                      BodySink& sink) -> bool {
+            // 非零 offset 通常是 HTTP 库的分段回调；ring 路径只处理整段，
+            // 直接交给同步实现，避免重复启动读取线程。
+            if (offset != 0) return syncProvider(offset, length, sink);
+            AsyncFileReader reader(
+                blockSize, depth,
+                useCondvar ? Handoff::CondVar : Handoff::Yield);
+            // 内核未启用 io_uring、seccomp 限制、ring 初始化失败等情况下
+            // 必须回退同步读，不能让下载直接失败。
             if (!reader.valid() || !reader.start(path, start, sliceLen)) {
-                return false;
+                return syncProvider(offset, length, sink);
             }
             for (;;) {
                 BufferPool::Buffer b = reader.next();
@@ -244,26 +279,7 @@ void handleDownload(const FileService& files, const HttpRequest& req,
     }
 #endif
 
-    res.provider = [canonical = entry.path, start](std::size_t offset,
-                                                   std::size_t length,
-                                                   BodySink& sink) -> bool {
-        std::ifstream f(canonical, std::ios::binary);
-        if (!f) return false;
-        f.seekg(static_cast<std::streamoff>(start + offset));
-
-        constexpr std::size_t kChunk = 64 * 1024;
-        std::vector<char> buf(std::min(length, kChunk));
-        std::size_t remaining = length;
-        while (remaining > 0) {
-            const std::size_t want = std::min(remaining, buf.size());
-            f.read(buf.data(), static_cast<std::streamsize>(want));
-            const std::size_t n = static_cast<std::size_t>(f.gcount());
-            if (n != want) return false;  // 必须写满，避免错位损坏
-            if (!sink.write(buf.data(), n)) return false;
-            remaining -= n;
-        }
-        return true;
-    };
+    res.provider = syncProvider;
 }
 
 }  // namespace

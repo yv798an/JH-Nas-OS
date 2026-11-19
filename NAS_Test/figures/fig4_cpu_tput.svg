@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="460" viewBox="0 0 1100 460">
+<rect width="1100" height="460" fill="#ffffff"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 z" fill="#444"/></marker></defs>
+<line x1="90.00" y1="339.00" x2="540.00" y2="339.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="295.00" x2="540.00" y2="295.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="251.00" x2="540.00" y2="251.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="207.00" x2="540.00" y2="207.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="163.00" x2="540.00" y2="163.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="119.00" x2="540.00" y2="119.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="75.00" x2="540.00" y2="75.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="102.68" y1="75.00" x2="102.68" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="123.87" y1="75.00" x2="123.87" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="189.69" y1="75.00" x2="189.69" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="276.71" y1="75.00" x2="276.71" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="342.53" y1="75.00" x2="342.53" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="408.35" y1="75.00" x2="408.35" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="495.37" y1="75.00" x2="495.37" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="90.00" y1="350.00" x2="540.00" y2="350.00" stroke="#333" stroke-width="1.5"/>
+<line x1="90.00" y1="75.00" x2="90.00" y2="350.00" stroke="#333" stroke-width="1.5"/>
+<line x1="102.68" y1="350.00" x2="102.68" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="102.68" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">0.7</text>
+<line x1="123.87" y1="350.00" x2="123.87" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="123.87" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">1</text>
+<line x1="189.69" y1="350.00" x2="189.69" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="189.69" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">2</text>
+<line x1="276.71" y1="350.00" x2="276.71" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="276.71" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">5</text>
+<line x1="342.53" y1="350.00" x2="342.53" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="342.53" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">10</text>
+<line x1="408.35" y1="350.00" x2="408.35" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="408.35" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">20</text>
+<line x1="495.37" y1="350.00" x2="495.37" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="495.37" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">50</text>
+<line x1="85.00" y1="339.00" x2="90.00" y2="339.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="343.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">20</text>
+<line x1="85.00" y1="295.00" x2="90.00" y2="295.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="299.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">60</text>
+<line x1="85.00" y1="251.00" x2="90.00" y2="251.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="255.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">100</text>
+<line x1="85.00" y1="207.00" x2="90.00" y2="207.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="211.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">140</text>
+<line x1="85.00" y1="163.00" x2="90.00" y2="163.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="167.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">180</text>
+<line x1="85.00" y1="119.00" x2="90.00" y2="119.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="123.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">220</text>
+<line x1="85.00" y1="75.00" x2="90.00" y2="75.00" stroke="#333" stroke-width="1.2"/>
+<text x="81.00" y="79.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">260</text>
+<text x="315.00" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle">CPU cost (cpu-s/GiB, log)</text>
+<text x="32.00" y="212.50" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle" transform="rotate(-90 32.00 212.50)">Throughput (MiB/s)</text>
+<text x="315.00" y="59.00" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222" font-weight="bold" text-anchor="middle">cold (64 KiB)</text>
+<rect x="266.74" y="334.65" width="11.0" height="11.0" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="496.71" y="334.91" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="498.54" y="335.31" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="496.94" y="334.92" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="498.88" y="335.32" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="497.45" y="334.92" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="498.73" y="335.14" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<circle cx="234.78" cy="173.69" r="5.5" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="301.65" cy="116.64" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="298.41" cy="118.62" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="297.54" cy="105.61" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="297.87" cy="101.64" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="300.39" cy="101.47" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="304.21" cy="103.23" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<text x="532.00" y="97.00" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#e07b00" font-weight="normal" text-anchor="end">sdb1 io_uring: 53-55 cpu-s/GiB @ ~19.9 MiB/s</text>
+<line x1="645.00" y1="350.00" x2="1095.00" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="645.00" y1="281.25" x2="1095.00" y2="281.25" stroke="#ececec" stroke-width="1.0"/>
+<line x1="645.00" y1="212.50" x2="1095.00" y2="212.50" stroke="#ececec" stroke-width="1.0"/>
+<line x1="645.00" y1="143.75" x2="1095.00" y2="143.75" stroke="#ececec" stroke-width="1.0"/>
+<line x1="645.00" y1="75.00" x2="1095.00" y2="75.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="657.68" y1="75.00" x2="657.68" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="678.87" y1="75.00" x2="678.87" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="744.69" y1="75.00" x2="744.69" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="831.71" y1="75.00" x2="831.71" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="897.53" y1="75.00" x2="897.53" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="963.35" y1="75.00" x2="963.35" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="1050.37" y1="75.00" x2="1050.37" y2="350.00" stroke="#ececec" stroke-width="1.0"/>
+<line x1="645.00" y1="350.00" x2="1095.00" y2="350.00" stroke="#333" stroke-width="1.5"/>
+<line x1="645.00" y1="75.00" x2="645.00" y2="350.00" stroke="#333" stroke-width="1.5"/>
+<line x1="657.68" y1="350.00" x2="657.68" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="657.68" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">0.7</text>
+<line x1="678.87" y1="350.00" x2="678.87" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="678.87" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">1</text>
+<line x1="744.69" y1="350.00" x2="744.69" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="744.69" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">2</text>
+<line x1="831.71" y1="350.00" x2="831.71" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="831.71" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">5</text>
+<line x1="897.53" y1="350.00" x2="897.53" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="897.53" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">10</text>
+<line x1="963.35" y1="350.00" x2="963.35" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="963.35" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">20</text>
+<line x1="1050.37" y1="350.00" x2="1050.37" y2="355.00" stroke="#333" stroke-width="1.2"/>
+<text x="1050.37" y="370.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="middle">50</text>
+<line x1="640.00" y1="350.00" x2="645.00" y2="350.00" stroke="#333" stroke-width="1.2"/>
+<text x="636.00" y="354.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">600</text>
+<line x1="640.00" y1="281.25" x2="645.00" y2="281.25" stroke="#333" stroke-width="1.2"/>
+<text x="636.00" y="285.25" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">800</text>
+<line x1="640.00" y1="212.50" x2="645.00" y2="212.50" stroke="#333" stroke-width="1.2"/>
+<text x="636.00" y="216.50" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">1000</text>
+<line x1="640.00" y1="143.75" x2="645.00" y2="143.75" stroke="#333" stroke-width="1.2"/>
+<text x="636.00" y="147.75" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">1200</text>
+<line x1="640.00" y1="75.00" x2="645.00" y2="75.00" stroke="#333" stroke-width="1.2"/>
+<text x="636.00" y="79.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="normal" text-anchor="end">1400</text>
+<text x="870.00" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle">CPU cost (cpu-s/GiB, log)</text>
+<text x="587.00" y="212.50" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#222" font-weight="normal" text-anchor="middle" transform="rotate(-90 587.00 212.50)">Throughput (MiB/s)</text>
+<text x="870.00" y="59.00" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#222" font-weight="bold" text-anchor="middle">hot (64 KiB)</text>
+<rect x="652.18" y="110.94" width="11.0" height="11.0" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<rect x="724.74" y="149.69" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="730.03" y="165.53" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="736.66" y="191.84" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="746.70" y="228.37" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="757.75" y="261.98" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<rect x="763.98" y="276.31" width="8.4" height="8.4" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<circle cx="658.09" cy="118.24" r="5.5" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<circle cx="727.93" cy="154.49" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="736.05" cy="171.81" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="741.38" cy="196.04" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="750.82" cy="233.45" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="762.88" cy="266.12" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="767.74" cy="281.42" r="4.2" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="663.00" cy="421.00" r="4.2" fill="#1f77b4" stroke="none" stroke-width="1.5"/>
+<line x1="650.00" y1="421.00" x2="676.00" y2="421.00" stroke="#1f77b4" stroke-width="2.0"/>
+<text x="683.00" y="425.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sda1 USB 3.0 sync</text>
+<circle cx="923.00" cy="421.00" r="4.0" fill="#ffffff" stroke="#1f77b4" stroke-width="1.8"/>
+<line x1="910.00" y1="421.00" x2="936.00" y2="421.00" stroke="#1f77b4" stroke-width="2.0"/>
+<text x="943.00" y="425.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sda1 USB 3.0 io_uring</text>
+<rect x="658.80" y="438.80" width="8.4" height="8.4" fill="#e07b00" stroke="none" stroke-width="1.5"/>
+<line x1="650.00" y1="443.00" x2="676.00" y2="443.00" stroke="#e07b00" stroke-width="2.0"/>
+<text x="683.00" y="447.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sdb1 USB 2.0 sync</text>
+<circle cx="923.00" cy="443.00" r="4.0" fill="#ffffff" stroke="#e07b00" stroke-width="1.8"/>
+<line x1="910.00" y1="443.00" x2="936.00" y2="443.00" stroke="#e07b00" stroke-width="2.0"/>
+<text x="943.00" y="447.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#222" font-weight="normal" text-anchor="start">sdb1 USB 2.0 io_uring</text>
+</svg>

@@ -1,0 +1,7 @@
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=none repeat=1 warmup=0
+
+VERIFY sync block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd1 block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd8 block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd64 block=64 hash=805f256ad4222325 bytes=67108864

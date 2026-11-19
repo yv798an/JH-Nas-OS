@@ -31,6 +31,7 @@ struct Config {
 
     // 下载 I/O（io_uring 需编译期检测到 liburing，见 CMake）。
     bool ioUseUring     = false;  // 是否对下载启用 io_uring
+    std::string ioHandoff = "yield";  // yield | condvar：异步交接方式
     int  ioBlockKb      = 128;    // 每次读的块大小
     int  ioDepth        = 8;      // in-flight 读队列深度
     int  ioThresholdKb  = 4096;   // 文件 >= 该大小才用 io_uring

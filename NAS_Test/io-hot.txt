@@ -1,0 +1,8 @@
+== io_uring 读取基准 ==
+file=/tmp/nas_io_bench.bin  size=256.0 MiB  block=64 KiB  repeat=3  drop_cache=off
+
+sync(read)         median   3931.1  min    344.1  max   5311.8  MiB/s (n=3)
+io_uring QD=1      median   4563.8  min   4313.0  max   4678.3  MiB/s (n=3)
+io_uring QD=4      median   4390.8  min   4376.0  max   4473.3  MiB/s (n=3)
+io_uring QD=16     median   3955.7  min   3653.4  max   4424.7  MiB/s (n=3)
+io_uring QD=64     median   4149.7  min   4110.8  max   4220.4  MiB/s (n=3)

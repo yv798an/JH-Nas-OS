@@ -1,0 +1,27 @@
+NAS bench summary
+out=/mnt/data/nas-bench-20010101-014207
+data_dir=/media/sda1 fstype=ext4 file=/media/sda1/nas_bench_64MiB.bin
+size_mib=64 repeat=1
+blocks=64 depths=1
+http_threads=1,2,4,8 http_rounds=3
+have_perf=1 have_hw=1 have_gdb=0
+io_hash=805f256ad4222325
+
+total 60
+-rw-------    1 root     root          3006 Jan  1 01:42 env.txt
+-rw-------    1 root     root             0 Jan  1 01:42 flame-load-sync.txt
+-rw-------    1 root     root             0 Jan  1 01:42 flame-load-uring.txt
+-rw-------    1 root     root             0 Jan  1 01:42 flame-sync.data
+-rw-------    1 root     root           355 Jan  1 01:42 flame-sync.record.txt
+-rw-------    1 root     root             0 Jan  1 01:42 flame-uring.data
+-rw-------    1 root     root           355 Jan  1 01:42 flame-uring.record.txt
+-rw-------    1 root     root           451 Jan  1 01:42 io-cold.csv
+-rw-------    1 root     root           400 Jan  1 01:42 io-cold.txt
+-rw-------    1 root     root           440 Jan  1 01:42 io-hot.csv
+-rw-------    1 root     root           421 Jan  1 01:42 io-hot.txt
+-rw-------    1 root     root          1209 Jan  1 01:42 nas-sync.conf
+-rw-------    1 root     root          1208 Jan  1 01:42 nas-uring.conf
+-rw-------    1 root     root         11436 Jan  1 01:42 perf-stat.txt
+-rw-------    1 root     root          2029 Jan  1 01:42 run.log
+-rw-------    1 root     root           262 Jan  1 01:42 summary.txt
+-rw-------    1 root     root           346 Jan  1 01:42 verify-io.txt

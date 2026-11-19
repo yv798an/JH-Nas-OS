@@ -26,6 +26,24 @@ std::atomic<int> g_failed{0};
         }                                                                  \
     } while (0)
 
+void readAll(nas::Handoff handoff, const char* path, const std::string& data) {
+    nas::AsyncFileReader reader(64 * 1024, 8, handoff);
+    CHECK(reader.valid());
+    if (!reader.start(path)) {
+        CHECK(false);
+        return;
+    }
+    std::string got;
+    got.reserve(data.size());
+    for (;;) {
+        nas::BufferPool::Buffer b = reader.next();
+        if (!b) break;  // EOF 哨兵
+        got.append(b.data(), b.length());
+    }
+    CHECK(got.size() == data.size());
+    CHECK(got == data);
+}
+
 }  // namespace
 
 int main() {
@@ -50,27 +68,20 @@ int main() {
         return 0;
     }
 
-    nas::AsyncFileReader reader(64 * 1024, 8);
-    if (!reader.valid()) {
-        nas::IoUring probe;
-        std::printf("  io_uring 不可用 (errno=%d)，跳过\n", probe.initErrno());
-        return 0;
-    }
-    if (!reader.start(path)) {
-        std::printf("  start 失败，跳过\n");
-        return 0;
-    }
-
-    std::string got;
-    got.reserve(kSize);
-    for (;;) {
-        nas::BufferPool::Buffer b = reader.next();
-        if (!b) break;  // EOF 哨兵
-        got.append(b.data(), b.length());
+    {
+        nas::AsyncFileReader probe(64 * 1024, 8);
+        if (!probe.valid()) {
+            nas::IoUring ring;
+            std::printf("  io_uring 不可用 (errno=%d)，跳过\n",
+                        ring.initErrno());
+            return 0;
+        }
     }
 
-    CHECK(got.size() == kSize);
-    CHECK(got == data);
+    std::printf("  handoff=yield ...\n");
+    readAll(nas::Handoff::Yield, path, data);
+    std::printf("  handoff=condvar ...\n");
+    readAll(nas::Handoff::CondVar, path, data);
 
     ::unlink(path);
 

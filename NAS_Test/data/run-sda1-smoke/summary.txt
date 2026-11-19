@@ -1,0 +1,20 @@
+NAS bench summary
+out=/mnt/data/nas-bench-smoke-sda1
+data_dir=/media/sda1 fstype=ext4 file=/media/sda1/nas_bench_256MiB.bin
+size_mib=256 repeat=2
+blocks=64,256 depths=1,8
+http_threads=1,2,4,8 http_rounds=3
+have_perf=1 have_hw=1
+io_hash=7ba4befdc4222325
+
+total 40
+-rw-------    1 root     root          2816 Jan  1 01:15 env.txt
+-rw-------    1 root     root          1958 Jan  1 01:15 io-cold.csv
+-rw-------    1 root     root           987 Jan  1 01:15 io-cold.txt
+-rw-------    1 root     root          1878 Jan  1 01:16 io-hot.csv
+-rw-------    1 root     root          1008 Jan  1 01:16 io-hot.txt
+-rw-------    1 root     root          1209 Jan  1 01:15 nas-sync.conf
+-rw-------    1 root     root          1208 Jan  1 01:15 nas-uring.conf
+-rw-------    1 root     root          2782 Jan  1 01:16 run.log
+-rw-------    1 root     root           254 Jan  1 01:16 summary.txt
+-rw-------    1 root     root           352 Jan  1 01:16 verify-io.txt

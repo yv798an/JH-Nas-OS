@@ -108,6 +108,16 @@ bool Config::set(const std::string& key, const std::string& value,
             error = "io.uring 必须是 true/false";
             return false;
         }
+    } else if (key == "io.handoff") {
+        const std::string v = toUpper(trim(value));
+        if (v == "YIELD") {
+            ioHandoff = "yield";
+        } else if (v == "CONDVAR") {
+            ioHandoff = "condvar";
+        } else {
+            error = "io.handoff 必须是 yield|condvar";
+            return false;
+        }
     } else if (key == "io.blockKb") {
         if (!parseInt(value, 4, 1 << 20, ioBlockKb)) {
             error = "io.blockKb 必须是 4..1048576 的整数";

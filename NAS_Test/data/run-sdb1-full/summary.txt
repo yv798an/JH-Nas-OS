@@ -1,0 +1,20 @@
+NAS bench summary
+out=/tmp/nas-bench-out-20261024-164422
+data_dir=/media/sdb1 fstype=ext4 file=/media/sdb1/nas_bench_128MiB.bin
+size_mib=128 repeat=2
+blocks=4,8,16,32,64,128,256,512,1024 depths=1,4,8,16,32,64
+http_threads=1,2,4,8 http_rounds=3
+have_perf=1 have_hw=1
+io_hash=d9cbadf124222325
+
+total 104
+-rw-------    1 root     root          3010 Jan  1 02:01 env.txt
+-rw-------    1 root     root         19275 Jan  1 02:15 io-cold.csv
+-rw-------    1 root     root          9196 Jan  1 02:15 io-cold.txt
+-rw-------    1 root     root         18229 Jan  1 02:16 io-hot.csv
+-rw-------    1 root     root          9187 Jan  1 02:16 io-hot.txt
+-rw-------    1 root     root          1209 Jan  1 02:01 nas-sync.conf
+-rw-------    1 root     root          1208 Jan  1 02:01 nas-uring.conf
+-rw-------    1 root     root         19242 Jan  1 02:16 run.log
+-rw-------    1 root     root           292 Jan  1 02:16 summary.txt
+-rw-------    1 root     root           352 Jan  1 02:16 verify-io.txt

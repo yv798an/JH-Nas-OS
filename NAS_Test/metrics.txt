@@ -1,0 +1,52 @@
+# HELP nas_uptime_seconds System uptime in seconds
+# TYPE nas_uptime_seconds gauge
+nas_uptime_seconds 3392054.2
+# HELP nas_cpu_percent CPU usage percent
+# TYPE nas_cpu_percent gauge
+nas_cpu_percent 1.02
+# HELP nas_load1 1-minute load average
+# TYPE nas_load1 gauge
+nas_load1 5.910
+# HELP nas_load5 5-minute load average
+# TYPE nas_load5 gauge
+nas_load5 3.310
+# HELP nas_load15 15-minute load average
+# TYPE nas_load15 gauge
+nas_load15 1.350
+# HELP nas_mem_total_bytes Total memory bytes
+# TYPE nas_mem_total_bytes gauge
+nas_mem_total_bytes 1687068672
+# HELP nas_mem_used_bytes Used memory bytes
+# TYPE nas_mem_used_bytes gauge
+nas_mem_used_bytes 471171072
+# HELP nas_mem_available_bytes Available memory bytes
+# TYPE nas_mem_available_bytes gauge
+nas_mem_available_bytes 1215897600
+# HELP nas_net_rx_bytes_total Received bytes (counter)
+# TYPE nas_net_rx_bytes_total counter
+nas_net_rx_bytes_total 3531020814
+# HELP nas_net_tx_bytes_total Transmitted bytes (counter)
+# TYPE nas_net_tx_bytes_total counter
+nas_net_tx_bytes_total 4258472692
+# HELP nas_share_used_bytes Used bytes per share
+# TYPE nas_share_used_bytes gauge
+# HELP nas_share_total_bytes Total bytes per share
+# TYPE nas_share_total_bytes gauge
+# HELP nas_process_rss_bytes Process resident set size bytes
+# TYPE nas_process_rss_bytes gauge
+nas_process_rss_bytes 7426048
+# HELP nas_process_threads Process thread count
+# TYPE nas_process_threads gauge
+nas_process_threads 12
+# HELP nas_process_open_fds Process open file descriptors
+# TYPE nas_process_open_fds gauge
+nas_process_open_fds 8
+# HELP nas_http_requests_total Total HTTP requests
+# TYPE nas_http_requests_total counter
+nas_http_requests_total 0
+# HELP nas_http_responses_4xx_total HTTP 4xx responses
+# TYPE nas_http_responses_4xx_total counter
+nas_http_responses_4xx_total 0
+# HELP nas_http_responses_5xx_total HTTP 5xx responses
+# TYPE nas_http_responses_5xx_total counter
+nas_http_responses_5xx_total 0

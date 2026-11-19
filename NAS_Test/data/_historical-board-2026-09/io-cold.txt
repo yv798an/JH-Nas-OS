@@ -1,0 +1,8 @@
+== io_uring 读取基准 ==
+file=/media/sda1/bench_io.bin  size=256.0 MiB  block=64 KiB  repeat=3  drop_cache=on
+
+sync(read)         median    170.9  min    170.4  max    171.0  MiB/s (n=3)
+io_uring QD=1      median    224.3  min    224.1  max    224.5  MiB/s (n=3)
+io_uring QD=4      median    222.7  min    221.8  max    223.7  MiB/s (n=3)
+io_uring QD=16     median    235.3  min    234.4  max    236.5  MiB/s (n=3)
+io_uring QD=64     median    233.5  min    232.5  max    233.9  MiB/s (n=3)

@@ -100,7 +100,9 @@ S92nasweb   -> 本程序
 - **io_uring（可选）**：Web 下载可走 io_uring 异步流水线（`io.uring=true`，且文件 ≥
   `io.thresholdKb`）。板上启用需镜像勾选 `BR2_PACKAGE_LIBURING=y` 且内核
   `CONFIG_IO_URING=y`；交叉构建会在工具链 sysroot 内查找 liburing（优先 `liburing.a`），
-  找不到则自动关闭，不影响其余功能（见 `CMakeLists.txt`）。
+  找不到则自动关闭，不影响其余功能（见 `CMakeLists.txt`）。即便编译期启用了 io_uring，
+  运行期 ring 初始化失败（内核未开 `CONFIG_IO_URING`、seccomp 限制等）时下载也会自动
+  回退同步读，不会让请求失败。
 
 ### 4.4 观测 / 健康契约
 
@@ -132,10 +134,18 @@ S92nasweb   -> 本程序
 
   ```ini
   test-binary = /usr/bin/nas-web-check.sh
-  test-timeout = 15
+  test-timeout = 20
+  watchdog-timeout = 60
   ```
 
   探测失败 → watchdog 停止喂狗 → 硬件复位，从而恢复卡死的服务。
+
+- **首次启动保护**：`S92nasweb` 探活成功后会写 `/run/nas/nasweb.healthy`；
+  `S95watchdog` 只有看到该标记才启动。这样首次部署、配置错误或二进制缺失时
+  不会因为探活失败进入复位循环；服务健康启动后仍由 watchdog 持续探活，
+  卡死时照常复位。
+- 维护/升级时先 `/etc/init.d/S95watchdog stop`，再停 `S92nasweb`；
+  否则 watchdog 会在 `test-timeout` 后把板子复位。
 
 ### 4.6 网络 / 回环启动契约（直接决定看门狗是否误复位）
 

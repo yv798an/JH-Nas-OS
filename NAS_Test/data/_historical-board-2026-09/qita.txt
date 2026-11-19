@@ -1,0 +1,37 @@
+看门狗
+root@JHNasOS:~# /usr/bin/nas-server --health-check --conf
+ig /etc/nas/nas.conf; echo "up=$?"
+health-check 0.0.0.0:8080: FAIL
+up=1
+root@JHNasOS:~# /etc/init.d/S92nasweb stop
+Stopping nas-web: OK
+root@JHNasOS:~# /usr/bin/nas-server --health-check --conf
+ig /etc/nas/nas.conf; echo "down=$?"
+health-check 0.0.0.0:8080: FAIL
+down=1
+root@JHNasOS:~# /etc/init.d/S92nasweb start; sleep 1
+Starting nas-web: OK
+
+
+优雅退出
+root@JHNasOS:~# cat /run/nas/nasweb.pid
+2900
+root@JHNasOS:~# /etc/init.d/S92nasweb stop
+Stopping nas-web: OK
+root@JHNasOS:~# ls /run/nas/nasweb.pid 2>&1
+ls: /run/nas/nasweb.pid: No such file or directory
+root@JHNasOS:~# netstat -ltn 2>/dev/null | grep 8080 || e
+cho "port free"
+port free
+
+静态体积
+root@JHNasOS:~# ls -l /usr/bin/nas-server
+-rwx--x--x    1 root     root       3220512 Jan  1 00:14 /usr/bin/nas-server
+
+yv@yvOrange:~/NAS-Web-Cpp$ TC=$HOME/buildroot/output/host
+yv@yvOrange:~/NAS-Web-Cpp$ STRIP=$TC/bin/riscv64-buildroot-linux-gnu-strip
+yv@yvOrange:~/NAS-Web-Cpp$ ls -l build-riscv64/nas-server     
+-rwxrwxr-x 1 yv yv 3220512  9月 29 16:36 build-riscv64/nas-server
+yv@yvOrange:~/NAS-Web-Cpp$ $STRIP -o /tmp/nas-server.stripped build-riscv64/nas-server
+yv@yvOrange:~/NAS-Web-Cpp$ ls -l /tmp/nas-server.stripped
+-rwxrwxr-x 1 yv yv 1991752  9月 29 16:50 /tmp/nas-server.stripped

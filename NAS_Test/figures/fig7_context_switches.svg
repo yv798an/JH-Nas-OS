@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440">
+<rect width="1000" height="440" fill="#ffffff"/>
+<text x="500.00" y="28.00" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#222" font-weight="bold" text-anchor="middle">HTTP t8 context switches (procfs, log scale)</text>
+<line x1="100.00" y1="360.00" x2="880.00" y2="360.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="364.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">50</text>
+<line x1="100.00" y1="336.60" x2="880.00" y2="336.60" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="340.60" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">100</text>
+<line x1="100.00" y1="282.27" x2="880.00" y2="282.27" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="286.27" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">500</text>
+<line x1="100.00" y1="258.87" x2="880.00" y2="258.87" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="262.87" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">1000</text>
+<line x1="100.00" y1="204.53" x2="880.00" y2="204.53" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="208.53" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">5000</text>
+<line x1="100.00" y1="181.13" x2="880.00" y2="181.13" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="185.13" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">10000</text>
+<line x1="100.00" y1="126.80" x2="880.00" y2="126.80" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="130.80" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">50000</text>
+<line x1="100.00" y1="103.40" x2="880.00" y2="103.40" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="107.40" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">100000</text>
+<line x1="100.00" y1="80.00" x2="880.00" y2="80.00" stroke="#e6e6e6" stroke-width="1.0"/>
+<text x="90.00" y="84.00" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#555" font-weight="normal" text-anchor="end">200000</text>
+<line x1="100.00" y1="360.00" x2="880.00" y2="360.00" stroke="#333" stroke-width="1.0"/>
+<line x1="100.00" y1="80.00" x2="100.00" y2="360.00" stroke="#333" stroke-width="1.0"/>
+<rect x="153.50" y="177.36" width="40.00" height="182.64" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="173.50" y="172.36" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">11183</text>
+<rect x="201.50" y="322.91" width="40.00" height="37.09" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="221.50" y="317.91" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#d62728" font-weight="normal" text-anchor="middle">150</text>
+<text x="197.50" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">sync
+t8 sda1</text>
+<rect x="348.50" y="171.37" width="40.00" height="188.63" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="368.50" y="166.37" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">13352</text>
+<rect x="396.50" y="335.93" width="40.00" height="24.07" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="416.50" y="330.93" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#d62728" font-weight="normal" text-anchor="middle">102</text>
+<text x="392.50" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">sync
+t8 sdb1</text>
+<rect x="543.50" y="174.38" width="40.00" height="185.62" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="563.50" y="169.38" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">12214</text>
+<rect x="591.50" y="116.15" width="40.00" height="243.85" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="611.50" y="111.15" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#d62728" font-weight="normal" text-anchor="middle">68549</text>
+<text x="587.50" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">uring
+t8 sda1</text>
+<rect x="738.50" y="173.92" width="40.00" height="186.08" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="758.50" y="168.92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1f77b4" font-weight="normal" text-anchor="middle">12382</text>
+<rect x="786.50" y="121.38" width="40.00" height="238.62" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="806.50" y="116.38" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#d62728" font-weight="normal" text-anchor="middle">58711</text>
+<text x="782.50" y="394.00" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333" font-weight="normal" text-anchor="middle">uring
+t8 sdb1</text>
+<rect x="250.00" y="395.00" width="12.00" height="12.00" fill="#1f77b4" stroke="#ffffff" stroke-width="0.8"/>
+<text x="268.00" y="406.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">voluntary</text>
+<rect x="420.00" y="395.00" width="12.00" height="12.00" fill="#d62728" stroke="#ffffff" stroke-width="0.8"/>
+<text x="438.00" y="406.00" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" font-weight="normal" text-anchor="start">nonvoluntary</text>
+</svg>

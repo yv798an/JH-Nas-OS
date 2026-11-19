@@ -1,0 +1,52 @@
+### kernel
+Linux JHNasOS 5.15.0+ #3 SMP Wed Aug 5 16:15:10 CST 2026 riscv64 GNU/Linux
+### cpu
+processor	: 0
+hart		: 1
+isa		: rv64imafdc
+isa-ext		: 
+processor	: 1
+hart		: 2
+isa		: rv64imafdc
+isa-ext		: 
+processor	: 2
+hart		: 3
+isa		: rv64imafdc
+isa-ext		: 
+processor	: 3
+hart		: 4
+isa		: rv64imafdc
+isa-ext		: 
+### mem
+MemTotal:        1968640 kB
+MemFree:         1870904 kB
+MemAvailable:    1899088 kB
+### mounts
+/dev/root / ext4 rw,relatime 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=926388k,nr_inodes=231597,mode=755 0 0
+proc /proc proc rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /dev/shm tmpfs rw,relatime,mode=777 0 0
+tmpfs /tmp tmpfs rw,relatime 0 0
+sysfs /sys sysfs rw,relatime 0 0
+### df
+Filesystem                Size      Used Available Use% Mounted on
+/dev/root                 1.7G     72.7M      1.5G   4% /
+devtmpfs                904.7M         0    904.7M   0% /dev
+tmpfs                   961.3M         0    961.3M   0% /dev/shm
+tmpfs                   961.3M     72.0K    961.2M   0% /tmp
+### rota
+loop0 rota=1
+loop1 rota=1
+loop2 rota=1
+loop3 rota=1
+loop4 rota=1
+loop5 rota=1
+loop6 rota=1
+loop7 rota=1
+mmcblk1 rota=0
+mtdblock0 rota=0
+mtdblock1 rota=0
+mtdblock2 rota=0
+### io_uring
+no node

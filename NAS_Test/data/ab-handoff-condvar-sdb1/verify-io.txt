@@ -1,0 +1,7 @@
+== I/O 基准 ==
+file=/media/sdb1/nas_bench_128MiB.bin size=128.0 MiB cache=none repeat=1 warmup=0
+
+VERIFY sync block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd1 block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd8 block=64 hash=d9cbadf124222325 bytes=134217728
+VERIFY uring_qd64 block=64 hash=d9cbadf124222325 bytes=134217728

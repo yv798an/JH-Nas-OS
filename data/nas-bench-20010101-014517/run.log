@@ -1,0 +1,37 @@
+[01:45:17] 创建测试文件 /media/sda1/nas_bench_64MiB.bin (64 MiB) ...
+[01:45:18] OUT=/mnt/data/nas-bench-20010101-014517
+[01:45:18] data_dir=/media/sda1 fstype=ext4 file=/media/sda1/nas_bench_64MiB.bin
+[01:45:18] IO cold: blocks=64 depths=1 repeat=1
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=cold repeat=1 warmup=0
+
+-- block=64 KiB --
+  sync           median    171.4  min    171.4  max    171.4 MiB/s  CPU   52.6%     3.14 cpu-s/GiB  p50   305.1 us  p95   655.5  p99   756.3
+  uring_qd1      median    220.9  min    220.9  max    220.9 MiB/s  CPU  140.5%     6.51 cpu-s/GiB  p50   204.9 us  p95   424.2  p99   572.2
+
+[01:45:19] IO hot: blocks=64 depths=1 repeat=1
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=hot repeat=1 warmup=1
+
+预热 page cache ...
+-- block=64 KiB --
+  sync           median   1242.9  min   1242.9  max   1242.9 MiB/s  CPU  100.1%     0.82 cpu-s/GiB  p50    49.2 us  p95    54.0  p99    55.9
+  uring_qd1      median   1152.3  min   1152.3  max   1152.3 MiB/s  CPU  196.0%     1.74 cpu-s/GiB  p50    53.0 us  p95    57.5  p99    60.6
+
+[01:45:19] 校验 sync/io_uring 内容哈希 ...
+== I/O 基准 ==
+file=/media/sda1/nas_bench_64MiB.bin size=64.0 MiB cache=none repeat=1 warmup=0
+
+VERIFY sync block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd1 block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd8 block=64 hash=805f256ad4222325 bytes=67108864
+VERIFY uring_qd64 block=64 hash=805f256ad4222325 bytes=67108864
+[01:45:21] perf stat: cycles,instructions,branches,branch-misses,cache-references,cache-misses,task-clock,context-switches,cpu-migrations,page-faults
+[01:45:23] 火焰图 sync ...
+[01:45:26] WARN: perf record sync 失败（见 flame-sync.record.txt）
+[01:45:26] WARN: perf record 不可用且板端没有 gdb；跳过火焰图 sync（装 gdb 或内核开 CONFIG_PERF_EVENTS）
+[01:45:26] 火焰图 uring ...
+[01:45:30] WARN: perf record uring 失败（见 flame-uring.record.txt）
+[01:45:30] WARN: perf record 不可用且板端没有 gdb；跳过火焰图 uring（装 gdb 或内核开 CONFIG_PERF_EVENTS）
+[01:45:30] skip HTTP
+[01:45:30] 完成。结果目录: /mnt/data/nas-bench-20010101-014517

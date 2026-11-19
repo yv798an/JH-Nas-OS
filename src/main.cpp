@@ -100,6 +100,7 @@ int runServe(const nas::Config& cfg) {
 
     nas::DownloadIoOptions io;
     io.useUring = cfg.ioUseUring;
+    io.useCondvar = (cfg.ioHandoff == "condvar");
     io.blockSize = static_cast<std::size_t>(cfg.ioBlockKb) * 1024;
     io.depth = static_cast<unsigned>(cfg.ioDepth);
     io.thresholdBytes = static_cast<std::uint64_t>(cfg.ioThresholdKb) * 1024;
@@ -122,8 +123,8 @@ int runServe(const nas::Config& cfg) {
              cfg.httpHost.c_str(), cfg.httpPort,
              static_cast<unsigned>(cfg.shareRoots.size()));
 #if defined(NAS_HAS_IO_URING)
-    LOG_INFO("download io_uring: compiled=yes requested=%d depth=%d",
-             cfg.ioUseUring ? 1 : 0, cfg.ioDepth);
+    LOG_INFO("download io_uring: compiled=yes requested=%d depth=%d handoff=%s",
+             cfg.ioUseUring ? 1 : 0, cfg.ioDepth, cfg.ioHandoff.c_str());
 #else
     LOG_INFO("download io_uring: compiled=no requested=%d",
              cfg.ioUseUring ? 1 : 0);

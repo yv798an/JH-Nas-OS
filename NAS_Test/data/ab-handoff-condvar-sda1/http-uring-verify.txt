@@ -1,0 +1,5 @@
+url=http://127.0.0.1:8080/api/download?path=/media/sda1/nas_bench_128MiB.bin&download=1
+label=uring-verify threads=1 rounds=1 warmup=0
+requests=1 bytes=134217728 time=0.840 s throughput=152.4 MiB/s errors=0
+cpu=0.834 s (user=0.509 sys=0.325) cpu_pct=99.3% cpu_s_per_gib=6.672 p50=839.549 ms p95=839.549 ms p99=839.549 ms
+hash=d9cbadf124222325 hash_mismatch=0 errors=0

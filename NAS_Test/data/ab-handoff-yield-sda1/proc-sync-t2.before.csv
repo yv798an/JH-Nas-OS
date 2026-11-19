@@ -1,0 +1,14 @@
+# pid=640 hz=100 voluntary=65 nonvoluntary=7
+tid,comm,utime_ticks,stime_ticks,vcsw,nivcsw
+640,nas-server,0,1,65,7
+643,nas-server,0,0,6,0
+644,nas-server,0,0,26,0
+645,nas-server,0,0,6,0
+646,nas-server,0,0,3,0
+647,nas-http,0,30,367,4
+648,nas-http,0,87,1064,16
+649,nas-server,0,0,2,0
+650,nas-server,0,0,2,0
+651,nas-server,0,0,2,0
+652,nas-server,0,0,1,0
+653,nas-server,0,0,1,0
